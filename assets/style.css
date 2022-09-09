@@ -1,12 +1,14 @@
 .wrapper {
-    display: flex;
-    flex-flow: row wrap;
+    display: flex;  
+    flex-direction: row;
+    flex-wrap: wrap;
 }
 
 .search-container {
     width: 30%;
     height: 100vh;
     background-color: yellow;
+    
 }
 
 .food-container {
@@ -18,5 +20,5 @@
 .drink-container {
     width: 35%;
     height: 100vh;
-    background-color: forestgreen;
+    background-color:forestgreen;
 }
