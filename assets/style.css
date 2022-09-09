@@ -1,11 +1,4 @@
 .search-container {
-    width: 30%
+    display: flex;
 }
 
-.food-container {
-    width: 30%
-}
-
-.drink-container {
-    width: 30%
-}
