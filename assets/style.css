@@ -1,4 +1,22 @@
-.search-container {
+.wrapper {
     display: flex;
+    flex-flow: row wrap;
 }
 
+.search-container {
+    width: 30%;
+    height: 100vh;
+    background-color: yellow;
+}
+
+.food-container {
+    width: 35%;
+    height: 100vh;
+    background-color: blueviolet;
+}
+
+.drink-container {
+    width: 35%;
+    height: 100vh;
+    background-color: forestgreen;
+}
