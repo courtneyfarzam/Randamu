@@ -4,9 +4,18 @@
 // const apiDrink = ``;
 
 
+
 document.addEventListener('DOMContentLoaded', function() {
 var elems = document.querySelectorAll('select');
 M.FormSelect.init(elems);
 
 
 });
+
+// Event handler function for searching
+// Main food function to add food recipe card
+// Main drink function to add drink recipe card
+// Function for processing food recipe and fetching API
+// Function for processing drink recipe and fetching API
+// Function for randomizing drink recipes - food API already does this
+// Function for showing and hiding divs, potentially
