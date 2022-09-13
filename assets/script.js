@@ -36,5 +36,30 @@ function fetchFoodRecipes(data) {
 
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('select');
+  M.FormSelect.init(elems);
+  
+
+});
+// add to search button function 
+selectElement = document.querySelector('#drinks');
+output = selectElement.options[selectElement.selectedIndex].value;
+
+
+function fetchDrinks() {
+var drinkApi = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=" + output;
+                
+fetch(drinkApi)
+.then(function (response) {
+  console.log(response);
+  console.log(drinkApi);
+  response.json().then(function (data) {
+    console.log
+  })
+})
+console.log(output);
+}
+
 fetchFoodRecipes();
 
