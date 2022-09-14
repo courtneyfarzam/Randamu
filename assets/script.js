@@ -74,7 +74,25 @@ function fetchFoodRecipes(data) {
         // Potentially add a solution for repeated recipes
         // console.log(randomFood);
     }
+      // dynamically create html
+      var recipeEl = document.createElement('div');
+      recipeEl.setAttribute('class', 'recipe-card');
 
+      var recipeName = document.createElement('h4');
+      recipeName.textContent = data.title; 
+      
+      var foodCategory = document.createElement('h5');
+      foodCategory.textContent = data.dishTypes;
+
+      var foodImg = document.createElement('img');
+      foodImg.setAttribute('class', 'recipe-img');
+      foodImg.src = data.sourceUrl;
+
+      var ingredients = document.createElement('td');
+      ingredients.textContent = data.extendedIngredients[i].original;
+
+      var recipeInstructions = document.createElement('p');
+      recipeInstructions = data.analyzedInstructions[0].steps[i];
   })
 }
 
