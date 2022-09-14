@@ -1,9 +1,11 @@
 const apiKey = '33dd3dda2eda41288af3b57daefc3a77';
 const apiId = '291b0eda';
+var searchBtn = document.querySelector('#searchBtn');
+var foodChoices = document.querySelector('#foodOptions');
+var drinkChoices = document.querySelector('#drinkOptions');
 
-
-let proteinType = 'Fish'
-let output = 'cocktail'
+let proteinType = 'chicken'
+// let output = 'cocktail'
 // Event handler function for searching
 // Main food function to add food recipe card
 // Main drink function to add drink recipe card
@@ -18,6 +20,16 @@ document.addEventListener('DOMContentLoaded', function() {
 var elems = document.querySelectorAll('select');
 M.FormSelect.init(elems);
 });
+
+function searchForRecipes(event) {
+  var proteinType = foodChoices.value;
+  var drinkType = drinkChoices.value;
+  console.log(proteinType)
+  console.log(drinkType)
+}
+searchBtn.addEventListener('click', searchForRecipes)
+
+
 
 
 function fetchFoodRecipes(data) {
@@ -58,4 +70,3 @@ console.log(output);
 }
 
 fetchFoodRecipes();
-
