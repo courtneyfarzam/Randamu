@@ -49,13 +49,15 @@ function processRandDrink() {
 };
 
 function fetchDrinks() {
-var drinkApi = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=" + output;
+var drinkApi = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=" + drinkType;
                 
 fetch(drinkApi)
 .then(function (response) {
   console.log(response);
   console.log(drinkApi);
   response.json().then(function (data) {
+
+    for(var i =0; i < 5;  i++){
 
     var drinkCount = data.drinks.length;
             var drinkPick = Math.floor(Math.random() * drinkCount);
@@ -64,7 +66,8 @@ fetch(drinkApi)
             var newDrinkURL =
                 "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkRand;
 
-                drinkAjax(newDrinkURL);
+                // drinkAjax(newDrinkURL);
+    }
   })
 })
 }
@@ -74,7 +77,7 @@ function drinkChoice(URL) {
       url: URL,
       method: "GET",
   }).then(function (response) {
-      dispDrink(response);
+      // dispDrink(response);
   });
 };
 
