@@ -29,6 +29,35 @@ function searchForRecipes(event) {
 }
 searchBtn.addEventListener('click', searchForRecipes)
 
+function showDrink(response) {
+      var drink = response.drinks[0];
+      var i = 1;
+      var stop = false;
+      var ingHead = "<tr><th>Ingredients</th><th>Amount</th></tr>"
+
+      $("#drinkName").text(drink.strDrink);
+      $("#drinkCategory").text("Category: " + drink.strCategory);
+      $("#drinkAlcoholic").text("Origin: " + drink.strAlcoholic);
+      $("#drinkInstructions").text(drink.strInstructions);
+      $("#drinkImage").attr("src", drink.strDrinkThumb);
+      //clear and populate ingredient table
+      $("#drinkIngredient").empty();
+      $("#drinkIngredient").append(ingHead);
+      while (!stop) {
+        if (drink["strIngredient" + i]) {
+          var trDiv = $("<tr>");
+          var tdDiv1 = $("<td>");
+          var tdDiv2 = $("<td>");
+              tdDiv1.text(drink["strIngredient" + i]);
+              tdDiv2.text(drink["strMeasure" + i]);
+              trDiv.append(tdDiv1, tdDiv2);
+              $("#drinkIngredient").append(trDiv);
+              i++;
+        } else {
+          stop = true;
+        }
+    }
+}
 
 
 
@@ -45,26 +74,6 @@ function fetchFoodRecipes(data) {
         // Potentially add a solution for repeated recipes
         // console.log(randomFood);
     }
-      // dynamically create html
-      var recipeEl = document.createElement('div');
-      recipeEl.setAttribute('class', 'recipe-card');
-
-      var recipeName = document.createElement('h4');
-      
-      var foodCategory = document.createElement('h5');
-      
-      var foodImg = document.createElement('img');
-      foodImg.setAttribute('class', 'recipe-img');
-      foodImg.src = '#';
-
-      var ingredientTable = document.createElement('tr');
-      
-      var ingredients = document.createElement('td');
-      
-      var ingredientAmount = document.createElement('td');
-      
-      var recipeInstructions = document.createElement('p');
-      
 
   })
 }
@@ -72,6 +81,8 @@ function fetchFoodRecipes(data) {
 // // add to search button function 
 // selectElement = document.querySelector('#drinks');
 // output = selectElement.options[selectElement.selectedIndex].value;
+
+
 
 
 function fetchDrinks() {
