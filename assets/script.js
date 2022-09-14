@@ -70,31 +70,41 @@ function fetchFoodRecipes(data) {
       for(var i = 0; i < 5; i++) {
         var displayedFood = Math.floor(Math.random() * data.results.length)
         var randomFood = data.results[displayedFood];
-        console.log(displayedFood)
+        // console.log(displayedFood);
         // Potentially add a solution for repeated recipes
-        console.log(randomFood);
+        // console.log(randomFood);
     }
+      // dynamically create html
+      var recipeEl = document.createElement('div');
+      recipeEl.setAttribute('class', 'recipe-card');
 
+      var recipeName = document.createElement('h4');
+      recipeName.textContent = data.title; 
+      
+      var foodCategory = document.createElement('h5');
+      foodCategory.textContent = data.dishTypes;
+
+      var foodImg = document.createElement('img');
+      foodImg.setAttribute('class', 'recipe-img');
+      foodImg.src = data.sourceUrl;
+
+      var ingredients = document.createElement('td');
+      ingredients.textContent = data.extendedIngredients[i].original;
+
+      var recipeInstructions = document.createElement('p');
+      recipeInstructions = data.analyzedInstructions[0].steps[i];
   })
-
 }
-  
+
 // // add to search button function 
 // selectElement = document.querySelector('#drinks');
 // output = selectElement.options[selectElement.selectedIndex].value;
 
 
 
-function processRandDrink() {
-  var drinkURL =
-      "https://www.thecocktaildb.com/api/json/v1/1/random.php"
-  drinkAjax(drinkURL);
-};
-
-
 
 function fetchDrinks() {
-  var drinkApi = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=" + drinkType;
+var drinkApi = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=" + output;
                 
 fetch(drinkApi)
 .then(function (response) {
@@ -102,30 +112,9 @@ fetch(drinkApi)
   console.log(drinkApi);
   response.json().then(function (data) {
     console.log
-
-    for(var i =0; i < 5;  i++){
-
-      var drinkCount = data.drinks.length;
-              var drinkPick = Math.floor(Math.random() * drinkCount);
-              var drinkRand = data.drinks[drinkPick].idDrink;
-  
-              var newDrinkURL =
-                  "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkRand;
-    }
   })
 })
 console.log(output);
 }
 
-function drinkChoice(URL) {
-  $.ajax({
-      url: URL,
-      method: "GET",
-  }).then(function (response) {
-      // dispDrink(response);
-  });
-};
-
-
-fetchDrinks();
 fetchFoodRecipes();
