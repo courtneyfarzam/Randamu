@@ -1,3 +1,7 @@
+html {
+    font-size: 62.5%;
+}
+
 .wrapper {
     display: flex;  
     flex-direction: row;
@@ -5,8 +9,11 @@
 }
 
 .search-container {
-    width: 30%;
+    width: 25%;
     height: 100vh;
+    margin-right: 1%;
+    margin-left: 1.5%;
+    padding: 3rem;
     background-color: yellow;
     
 }
@@ -14,11 +21,14 @@
 .food-container {
     width: 35%;
     height: 100vh;
+    margin-right: 1%;
+    padding: 3rem;
     background-color: blueviolet;
 }
 
 .drink-container {
     width: 35%;
     height: 100vh;
+    padding: 3rem;
     background-color:forestgreen;
 }
