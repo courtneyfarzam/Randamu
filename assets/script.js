@@ -5,7 +5,7 @@ var foodChoices = document.querySelector('#foodOptions');
 var drinkChoices = document.querySelector('#drinkOptions');
 
 let proteinType = 'chicken'
-// let output = 'cocktail'
+let output = 'cocktail'
 // Event handler function for searching
 // Main food function to add food recipe card
 // Main drink function to add drink recipe card
@@ -26,18 +26,24 @@ function searchForRecipes(event) {
   var drinkType = drinkChoices.value;
   console.log(proteinType)
   console.log(drinkType)
+
+  // showFoodRecipe();
+  // showDrinkRecipe();
+  fetchFoodRecipes();
+  fetchDrinks();
 }
-searchBtn.addEventListener('click', searchForRecipes)
+searchBtn.addEventListener('click', searchForRecipes());
+console.log(searchForRecipes)
 
 
 
 
 function fetchFoodRecipes(data) {
-  fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=33dd3dda2eda41288af3b57daefc3a77&titleMatch=${proteinType}&number=100&addRecipeInformation=true`)
+  fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=33dd3dda2eda41288af3b57daefc3a77&titleMatch=${proteinType}&number=100&addRecipeInformation=true&fillIngredients=true`)
   
   .then(response => response.json())
   .then(data => {
-      console.log(data)
+      // console.log(data)
       for(var i = 0; i < 5; i++) {
         var displayedFood = Math.floor(Math.random() * data.results.length)
         var randomFood = data.results[displayedFood];
