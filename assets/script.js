@@ -41,15 +41,34 @@ function fetchFoodRecipes(data) {
       for(var i = 0; i < 5; i++) {
         var displayedFood = Math.floor(Math.random() * data.results.length)
         var randomFood = data.results[displayedFood];
-        console.log(displayedFood)
+        // console.log(displayedFood);
         // Potentially add a solution for repeated recipes
-        console.log(randomFood);
+        // console.log(randomFood);
     }
+      // dynamically create html
+      var recipeEl = document.createElement('div');
+      recipeEl.setAttribute('class', 'recipe-card');
+
+      var recipeName = document.createElement('h4');
+      
+      var foodCategory = document.createElement('h5');
+      
+      var foodImg = document.createElement('img');
+      foodImg.setAttribute('class', 'recipe-img');
+      foodImg.src = '#';
+
+      var ingredientTable = document.createElement('tr');
+      
+      var ingredients = document.createElement('td');
+      
+      var ingredientAmount = document.createElement('td');
+      
+      var recipeInstructions = document.createElement('p');
+      
 
   })
-
 }
-  
+
 // // add to search button function 
 // selectElement = document.querySelector('#drinks');
 // output = selectElement.options[selectElement.selectedIndex].value;
