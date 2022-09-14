@@ -95,6 +95,7 @@ function drinkChoice(URL) {
   });
 };
 
+//TESTING PUSH
 
 fetchDrinks();
 fetchFoodRecipes();
