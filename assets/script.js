@@ -42,46 +42,20 @@ function fetchFoodRecipes(data) {
 // selectElement = document.querySelector('#drinks');
 // output = selectElement.options[selectElement.selectedIndex].value;
 
-function processRandDrink() {
-  var drinkURL =
-      "https://www.thecocktaildb.com/api/json/v1/1/random.php"
-  drinkAjax(drinkURL);
-};
 
 function fetchDrinks() {
-var drinkApi = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=" + drinkType;
+var drinkApi = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=" + output;
                 
 fetch(drinkApi)
 .then(function (response) {
   console.log(response);
   console.log(drinkApi);
   response.json().then(function (data) {
-
-    for(var i =0; i < 5;  i++){
-
-    var drinkCount = data.drinks.length;
-            var drinkPick = Math.floor(Math.random() * drinkCount);
-            var drinkRand = data.drinks[drinkPick].idDrink;
-
-            var newDrinkURL =
-                "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" + drinkRand;
-
-                // drinkAjax(newDrinkURL);
-    }
+    console.log
   })
 })
+console.log(output);
 }
 
-function drinkChoice(URL) {
-  $.ajax({
-      url: URL,
-      method: "GET",
-  }).then(function (response) {
-      // dispDrink(response);
-  });
-};
-
-
-fetchDrinks();
 fetchFoodRecipes();
 
