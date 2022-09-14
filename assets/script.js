@@ -62,7 +62,7 @@ function showDrink(response) {
 
 
 function fetchFoodRecipes(data) {
-  fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=33dd3dda2eda41288af3b57daefc3a77&titleMatch=${proteinType}&number=100&addRecipeInformation=true`)
+  fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=33dd3dda2eda41288af3b57daefc3a77&titleMatch=${proteinType}&number=100&addRecipeInformation=true&fillIngredients=true`)
   
   .then(response => response.json())
   .then(data => {
