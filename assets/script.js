@@ -1,8 +1,8 @@
 const apiKey = '33dd3dda2eda41288af3b57daefc3a77';
 const apiId = '291b0eda';
 var searchBtn = document.querySelector('#searchBtn');
-var foodChoices = document.querySelector('#foodOptions');
-var drinkChoices = document.querySelector('#drinkOptions');
+var foodChoices = document.querySelector('#foodChoices');
+var drinkChoices = document.querySelector('#drinkChoices');
 
 let proteinType = 'chicken'
 // let output = 'cocktail'
@@ -21,43 +21,55 @@ var elems = document.querySelectorAll('select');
 M.FormSelect.init(elems);
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.modal');
+  var instances = M.Modal.init(elems);
+});
+
 function searchForRecipes(event) {
   var proteinType = foodChoices.value;
   var drinkType = drinkChoices.value;
   console.log(proteinType)
   console.log(drinkType)
-}
+
+  fetchFoodRecipes();
+  fetchDrinks();
+};
+
+
+
+// Search Button
 searchBtn.addEventListener('click', searchForRecipes)
 
-function showDrink(response) {
-      var drink = response.drinks[0];
-      var i = 1;
-      var stop = false;
-      var ingHead = "<tr><th>Ingredients</th><th>Amount</th></tr>"
+// function showDrink(response) {
+//       var drink = response.drinks[0];
+//       var i = 1;
+//       var stop = false;
+//       var ingHead = "<tr><th>Ingredients</th><th>Amount</th></tr>"
 
-      $("#drinkName").text(drink.strDrink);
-      $("#drinkCategory").text("Category: " + drink.strCategory);
-      $("#drinkAlcoholic").text("Origin: " + drink.strAlcoholic);
-      $("#drinkInstructions").text(drink.strInstructions);
-      $("#drinkImage").attr("src", drink.strDrinkThumb);
-      //clear and populate ingredient table
-      $("#drinkIngredient").empty();
-      $("#drinkIngredient").append(ingHead);
-      while (!stop) {
-        if (drink["strIngredient" + i]) {
-          var trDiv = $("<tr>");
-          var tdDiv1 = $("<td>");
-          var tdDiv2 = $("<td>");
-              tdDiv1.text(drink["strIngredient" + i]);
-              tdDiv2.text(drink["strMeasure" + i]);
-              trDiv.append(tdDiv1, tdDiv2);
-              $("#drinkIngredient").append(trDiv);
-              i++;
-        } else {
-          stop = true;
-        }
-    }
-}
+//       $("#drinkName").text(drink.strDrink);
+//       $("#drinkCategory").text("Category: " + drink.strCategory);
+//       $("#drinkAlcoholic").text("Origin: " + drink.strAlcoholic);
+//       $("#drinkInstructions").text(drink.strInstructions);
+//       $("#drinkImage").attr("src", drink.strDrinkThumb);
+//       //clear and populate ingredient table
+//       $("#drinkIngredient").empty();
+//       $("#drinkIngredient").append(ingHead);
+//       while (!stop) {
+//         if (drink["strIngredient" + i]) {
+//           var trDiv = $("<tr>");
+//           var tdDiv1 = $("<td>");
+//           var tdDiv2 = $("<td>");
+//               tdDiv1.text(drink["strIngredient" + i]);
+//               tdDiv2.text(drink["strMeasure" + i]);
+//               trDiv.append(tdDiv1, tdDiv2);
+//               $("#drinkIngredient").append(trDiv);
+//               i++;
+//         } else {
+//           stop = true;
+//         }
+//     }
+
 
 
 
@@ -75,24 +87,24 @@ function fetchFoodRecipes(data) {
         // console.log(randomFood);
     }
       // dynamically create html
-      var recipeEl = document.createElement('div');
-      recipeEl.setAttribute('class', 'recipe-card');
+      // var recipeEl = document.createElement('div');
+      // recipeEl.setAttribute('class', 'recipe-card');
 
-      var recipeName = document.createElement('h4');
-      recipeName.textContent = data.title; 
+      // var recipeName = document.createElement('h4');
+      // recipeName.textContent = data.title; 
       
-      var foodCategory = document.createElement('h5');
-      foodCategory.textContent = data.dishTypes;
+      // var foodCategory = document.createElement('h5');
+      // foodCategory.textContent = data.dishTypes;
 
-      var foodImg = document.createElement('img');
-      foodImg.setAttribute('class', 'recipe-img');
-      foodImg.src = data.sourceUrl;
+      // var foodImg = document.createElement('img');
+      // foodImg.setAttribute('class', 'recipe-img');
+      // foodImg.src = data.sourceUrl;
 
-      var ingredients = document.createElement('td');
-      ingredients.textContent = data.extendedIngredients[i].original;
+      // // var ingredients = document.createElement('td');
+      // // ingredients.textContent = data.extendedIngredients[i].original;
 
-      var recipeInstructions = document.createElement('p');
-      recipeInstructions = data.analyzedInstructions[0].steps[i];
+      // var recipeInstructions = document.createElement('p');
+      // recipeInstructions = data.analyzedInstructions[0].steps[i];
   })
 }
 
@@ -117,4 +129,4 @@ fetch(drinkApi)
 console.log(output);
 }
 
-fetchFoodRecipes();
+
