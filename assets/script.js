@@ -29,7 +29,12 @@ function searchForRecipes(event) {
 }
 searchBtn.addEventListener('click', searchForRecipes)
 
-
+function showDrink(response) {
+  var drink = response.drinks[0];
+  var i = 1;
+  var stop = false;
+  var ingHead = "<tr><th>Ingredients</th><th>Amount</th></tr>"
+}
 
 
 function fetchFoodRecipes(data) {
@@ -61,6 +66,8 @@ function processRandDrink() {
       "https://www.thecocktaildb.com/api/json/v1/1/random.php"
   drinkAjax(drinkURL);
 };
+
+
 
 function fetchDrinks() {
   var drinkApi = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=" + drinkType;
@@ -95,7 +102,6 @@ function drinkChoice(URL) {
   });
 };
 
-//TESTING PUSH
 
 fetchDrinks();
 fetchFoodRecipes();
