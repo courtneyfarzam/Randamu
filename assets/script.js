@@ -29,14 +29,11 @@ M.FormSelect.init(elems);
 
 
 
-
-// Search Button
-
 function showDrink(response) {
       var drink = response.drinks[0];
       var i = 1;
       var stop = false;
-      var ingHead = "<tr><th>Ingredients</th><th>Amount</th></tr>"
+      var ingHead = "<tr><th>Ingredients</th><th>Amount</th></tr>";
 
       // dynamically create html
       // WE WILL PROBABLY HAVE TO DO FOR EACH HERE
@@ -102,31 +99,31 @@ function fetchFoodRecipes(data) {
     }
       // dynamically create html
       // WE WILL PROBABLY HAVE TO DO FOR EACH HERE
-      // var recipeEl = document.createElement('div');
-      // recipeEl.setAttribute('class', 'recipe-card');
+      var recipeEl = document.createElement('div');
+      recipeEl.setAttribute('class', 'recipe-card');
 
-      // var recipeName = document.createElement('h4');
-      // recipeName.textContent = data.title; 
+      var recipeName = document.createElement('h4');
+      recipeName.textContent = data.title; 
       
-      // var foodCategory = document.createElement('h5');
-      // foodCategory.textContent = data.dishTypes;
+      var foodCategory = document.createElement('h5');
+      foodCategory.textContent = data.dishTypes;
 
-      // var foodImg = document.createElement('img');
-      // foodImg.setAttribute('class', 'recipe-img');
-      // foodImg.src = data.sourceUrl;
+      var foodImg = document.createElement('img');
+      foodImg.setAttribute('class', 'recipe-img');
+      foodImg.src = data.sourceUrl;
 
-      // var ingredients = document.createElement('td');
-      // ingredients.textContent = data.extendedIngredients[i].original;
+      var ingredients = document.createElement('td');
+      ingredients.textContent = data.extendedIngredients[i].original;
 
-      // var recipeInstructions = document.createElement('p');
-      // recipeInstructions = data.analyzedInstructions[0].steps[i];
+      var recipeInstructions = document.createElement('p');
+      recipeInstructions = data.analyzedInstructions[0].steps[i];
   })
 
 }
   
 // // add to search button function 
-// selectElement = document.querySelector('#drinks');
-// output = selectElement.options[selectElement.selectedIndex].value;
+selectElement = document.querySelector('#drinks');
+output = selectElement.options[selectElement.selectedIndex].value;
 
 
 function fetchDrinks(data) {
