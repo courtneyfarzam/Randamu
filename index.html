@@ -17,9 +17,9 @@
     <div class="food">
 
         <h3>Food Options:</h3>
-        <div id="protein" class="input-field col s12">
+        <div id="foodChoices" class="input-field col s12">
             <select id="foodOptions">
-            <option value="" disabled selected>Please Select Your Meal</option>
+            <option value="0" disabled selected>Please Select Your Meal</option>
             <option value="Chicken">Chicken</option>
             <option value="Beef">Beef</option>
             <option value="Lamb">Lamb</option>
@@ -39,9 +39,9 @@
     <div class="drink">
 
         <h3>Drink Options:</h3>
-        <div id=""  class="input-field col s12">
+        <div id="drinkChoices"  class="input-field col s12">
             <select id="drinkOptions">
-            <option value="" disabled selected>Please Select Your Drink</option>
+            <option value="0" disabled selected>Please Select Your Drink</option>
             <option value="Ordinary Drink">Ordinary Drink</option>
             <option value="Cocktail">Cocktail</option>
             <option value="Beer">Beer</option>
@@ -53,24 +53,39 @@
             </select>
             <label>Materialize Select</label>
         </div>
-
-    <button class="searchBtn" id="searchBtn">Search</button>
-
+        
+        <!-- Search Button -->
+        <button class="searchBtn" id="searchBtn">Search</button>
     </div>
     
 </div>
 
-<div class="food-container">
-    <h2>Food Recipes:</h2>
-    <!-- These will be added in Javascript -->
-</div>
-<div class="drink-container">
-    <h2>Drink Recipes:</h2>
-    <!-- These will be added in Javascript -->
+    <div class="food-container">
+        <h2>Food Recipes:</h2>
+        <!-- These will be added in Javascript -->
+    </div>
+    <div class="drink-container">
+        <h2>Drink Recipes:</h2>
+        <!-- These will be added in Javascript -->
+    </div>
 
 </div>
+  
 
-</div>
+    <!-- Modal Trigger -->
+    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Learn More</a>
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+
 </body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
