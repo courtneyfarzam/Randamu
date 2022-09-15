@@ -45,6 +45,7 @@ searchBtn.addEventListener('click', searchForRecipes)
 //       var ingHead = "<tr><th>Ingredients</th><th>Amount</th></tr>"
 
       // dynamically create html
+      // WE WILL PROBABLY HAVE TO DO FOR EACH HERE
       // var recipeEl = document.createElement('div');
       // recipeEl.setAttribute('class', 'recipe-card');
 
@@ -105,6 +106,7 @@ function fetchFoodRecipes(data) {
         // console.log(randomFood);
     }
       // dynamically create html
+      // WE WILL PROBABLY HAVE TO DO FOR EACH HERE
       // var recipeEl = document.createElement('div');
       // recipeEl.setAttribute('class', 'recipe-card');
 
