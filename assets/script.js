@@ -32,56 +32,56 @@ M.FormSelect.init(elems);
 
 // Search Button
 
-// function showDrink(response) {
-//       var drink = response.drinks[0];
-//       var i = 1;
-//       var stop = false;
-//       var ingHead = "<tr><th>Ingredients</th><th>Amount</th></tr>"
+function showDrink(response) {
+      var drink = response.drinks[0];
+      var i = 1;
+      var stop = false;
+      var ingHead = "<tr><th>Ingredients</th><th>Amount</th></tr>"
 
       // dynamically create html
       // WE WILL PROBABLY HAVE TO DO FOR EACH HERE
-      // var recipeEl = document.createElement('div');
-      // recipeEl.setAttribute('class', 'recipe-card');
+      var recipeEl = document.createElement('div');
+      recipeEl.setAttribute('class', 'recipe-card');
 
-      // var recipeName = document.createElement('h4');
-      // recipeName.textContent = data.title; 
+      var recipeName = document.createElement('h4');
+      recipeName.textContent = data.title; 
       
-      // var drinkCategory = document.createElement('h5');
-      // drinkCategory.textContent = data.dishTypes;
+      var drinkCategory = document.createElement('h5');
+      drinkCategory.textContent = data.dishTypes;
 
-      // var drinkImg = document.createElement('img');
-      // drinkImg.setAttribute('class', 'recipe-img');
-      // drinkImg.src = data.sourceUrl;
+      var drinkImg = document.createElement('img');
+      drinkImg.setAttribute('class', 'recipe-img');
+      drinkImg.src = data.sourceUrl;
 
-      // var ingredients = document.createElement('td');
-      // ingredients.textContent = data.extendedIngredients[i].original;
+      var ingredients = document.createElement('td');
+      ingredients.textContent = data.extendedIngredients[i].original;
 
-      // var recipeInstructions = document.createElement('p');
-      // recipeInstructions = data.analyzedInstructions[0].steps[i];
+      var recipeInstructions = document.createElement('p');
+      recipeInstructions = data.analyzedInstructions[0].steps[i];
 
 
-//       $("#drinkName").text(drink.strDrink);
-//       $("#drinkCategory").text("Category: " + drink.strCategory);
-//       $("#drinkAlcoholic").text("Origin: " + drink.strAlcoholic);
-//       $("#drinkInstructions").text(drink.strInstructions);
-//       $("#drinkImage").attr("src", drink.strDrinkThumb);
-//       //clear and populate ingredient table
-//       $("#drinkIngredient").empty();
-//       $("#drinkIngredient").append(ingHead);
-//       while (!stop) {
-//         if (drink["strIngredient" + i]) {
-//           var trDiv = $("<tr>");
-//           var tdDiv1 = $("<td>");
-//           var tdDiv2 = $("<td>");
-//               tdDiv1.text(drink["strIngredient" + i]);
-//               tdDiv2.text(drink["strMeasure" + i]);
-//               trDiv.append(tdDiv1, tdDiv2);
-//               $("#drinkIngredient").append(trDiv);
-//               i++;
-//         } else {
-//           stop = true;
-//         }
-//     }
+      $("#drinkName").text(drink.strDrink);
+      $("#drinkCategory").text("Category: " + drink.strCategory);
+      $("#drinkAlcoholic").text("Origin: " + drink.strAlcoholic);
+      $("#drinkInstructions").text(drink.strInstructions);
+      $("#drinkImage").attr("src", drink.strDrinkThumb);
+      //clear and populate ingredient table
+      $("#drinkIngredient").empty();
+      $("#drinkIngredient").append(ingHead);
+      while (!stop) {
+        if (drink["strIngredient" + i]) {
+          var trDiv = $("<tr>");
+          var tdDiv1 = $("<td>");
+          var tdDiv2 = $("<td>");
+              tdDiv1.text(drink["strIngredient" + i]);
+              tdDiv2.text(drink["strMeasure" + i]);
+              trDiv.append(tdDiv1, tdDiv2);
+              $("#drinkIngredient").append(trDiv);
+              i++;
+        } else {
+          stop = true;
+        }
+    }
 
 
 
