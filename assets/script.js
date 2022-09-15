@@ -148,18 +148,18 @@ function fetchDrinks(data) {
           console.log(data)
              // dynamically create html
       // WE WILL PROBABLY HAVE TO DO FOR EACH HERE
-      var recipeEl = document.createElement('div');
-      recipeEl.setAttribute('class', 'recipe-card');
+      // var recipeEl = document.createElement('div');
+      // recipeEl.setAttribute('class', 'recipe-card');
 
-      var recipeName = document.createElement('h4');
-      recipeName.textContent = data.drinks[i].strDrink; 
+      // var recipeName = document.createElement('h4');
+      // recipeName.textContent = data.drinks[i].strDrink; 
       
-      var drinkCategory = document.createElement('h5');
-      drinkCategory.textContent = data.drinks[i].strCategory;
+      // var drinkCategory = document.createElement('h5');
+      // drinkCategory.textContent = data.drinks[i].strCategory;
 
-      var drinkImg = document.createElement('img');
-      drinkImg.setAttribute('class', 'recipe-img');
-      drinkImg.src = data.drinks[i].strDrinkThumb;
+      // var drinkImg = document.createElement('img');
+      // drinkImg.setAttribute('class', 'recipe-img');
+      // drinkImg.src = data.drinks[i].strDrinkThumb;
 
       // var ingredients = document.createElement('td');
       // ingredients.textContent = data.drinks[i].;
