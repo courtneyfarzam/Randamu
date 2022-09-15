@@ -45,24 +45,24 @@ searchBtn.addEventListener('click', searchForRecipes)
 //       var ingHead = "<tr><th>Ingredients</th><th>Amount</th></tr>"
 
       // dynamically create html
-      var recipeEl = document.createElement('div');
-      recipeEl.setAttribute('class', 'recipe-card');
+      // var recipeEl = document.createElement('div');
+      // recipeEl.setAttribute('class', 'recipe-card');
 
-      var recipeName = document.createElement('h4');
-      recipeName.textContent = data.title; 
+      // var recipeName = document.createElement('h4');
+      // recipeName.textContent = data.title; 
       
-      var drinkCategory = document.createElement('h5');
-      drinkCategory.textContent = data.dishTypes;
+      // var drinkCategory = document.createElement('h5');
+      // drinkCategory.textContent = data.dishTypes;
 
-      var drinkImg = document.createElement('img');
-      drinkImg.setAttribute('class', 'recipe-img');
-      drinkImg.src = data.sourceUrl;
+      // var drinkImg = document.createElement('img');
+      // drinkImg.setAttribute('class', 'recipe-img');
+      // drinkImg.src = data.sourceUrl;
 
-      var ingredients = document.createElement('td');
-      ingredients.textContent = data.extendedIngredients[i].original;
+      // var ingredients = document.createElement('td');
+      // ingredients.textContent = data.extendedIngredients[i].original;
 
-      var recipeInstructions = document.createElement('p');
-      recipeInstructions = data.analyzedInstructions[0].steps[i];
+      // var recipeInstructions = document.createElement('p');
+      // recipeInstructions = data.analyzedInstructions[0].steps[i];
 
 
 //       $("#drinkName").text(drink.strDrink);
@@ -98,31 +98,31 @@ function fetchFoodRecipes(data) {
   .then(data => {
       // console.log(data)
       for(var i = 0; i < 5; i++) {
-        var displayedFood = Math.floor(Math.random() * data.results.length)
-        var randomFood = data.results[displayedFood];
-        console.log(displayedFood)
+        var randomFood = Math.floor(Math.random() * data.results.length)
+        var displayedFood = data.results[randomFood];
+        // console.log(displayedFood)
         // Potentially add a solution for repeated recipes
-        console.log(randomFood);
+        // console.log(randomFood);
     }
       // dynamically create html
-      var recipeEl = document.createElement('div');
-      recipeEl.setAttribute('class', 'recipe-card');
+      // var recipeEl = document.createElement('div');
+      // recipeEl.setAttribute('class', 'recipe-card');
 
-      var recipeName = document.createElement('h4');
-      recipeName.textContent = data.title; 
+      // var recipeName = document.createElement('h4');
+      // recipeName.textContent = data.title; 
       
-      var foodCategory = document.createElement('h5');
-      foodCategory.textContent = data.dishTypes;
+      // var foodCategory = document.createElement('h5');
+      // foodCategory.textContent = data.dishTypes;
 
-      var foodImg = document.createElement('img');
-      foodImg.setAttribute('class', 'recipe-img');
-      foodImg.src = data.sourceUrl;
+      // var foodImg = document.createElement('img');
+      // foodImg.setAttribute('class', 'recipe-img');
+      // foodImg.src = data.sourceUrl;
 
-      var ingredients = document.createElement('td');
-      ingredients.textContent = data.extendedIngredients[i].original;
+      // var ingredients = document.createElement('td');
+      // ingredients.textContent = data.extendedIngredients[i].original;
 
-      var recipeInstructions = document.createElement('p');
-      recipeInstructions = data.analyzedInstructions[0].steps[i];
+      // var recipeInstructions = document.createElement('p');
+      // recipeInstructions = data.analyzedInstructions[0].steps[i];
   })
 
 }
@@ -132,18 +132,26 @@ function fetchFoodRecipes(data) {
 // output = selectElement.options[selectElement.selectedIndex].value;
 
 
-function fetchDrinks() {
+function fetchDrinks(data) {
 var drinkApi = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=" + output;
                 
 fetch(drinkApi)
-.then(function (response) {
-  console.log(response);
-  console.log(drinkApi);
-  response.json().then(function (data) {
-    console.log
-  })
+.then(response => response.json())
+.then(data => {
+    console.log(data)
+    for(var i = 0; i < 5; i++) {
+      var randomDrinks = Math.floor(Math.random() * data.drinks.length)
+      var drinks = data.drinks[randomDrinks].idDrink;
+      console.log(randomDrinks)
+      console.log(drinks)
+      fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinks}`)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+      })
+    }
 })
-console.log(output);
 }
 
-fetchFoodRecipes();
+
+fetchDrinks();
