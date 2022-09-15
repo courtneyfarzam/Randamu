@@ -5,7 +5,7 @@ var foodChoices = document.querySelector('#foodOptions');
 var drinkChoices = document.querySelector('#drinkOptions');
 
 let proteinType = 'chicken'
-let output = 'cocktail'
+let drinkType = 'cocktail'
 // Event handler function for searching
 // Main food function to add food recipe card
 // Main drink function to add drink recipe card
@@ -15,28 +15,22 @@ let output = 'cocktail'
 // Function for showing and hiding divs, potentially
 
 
+searchBtn.addEventListener('click', function() {
+  fetchFoodRecipes();
+  fetchDrinks();
+})
+
 // Event listener for drop down menus
 document.addEventListener('DOMContentLoaded', function() {
 var elems = document.querySelectorAll('select');
 M.FormSelect.init(elems);
 });
 
-function searchForRecipes(event) {
-  var proteinType = foodChoices.value;
-  var drinkType = drinkChoices.value;
-  console.log(proteinType)
-  console.log(drinkType)
 
-  // showFoodRecipe();
-  // showDrinkRecipe();
-  fetchFoodRecipes();
-  fetchDrinks();
-};
 
 
 
 // Search Button
-searchBtn.addEventListener('click', searchForRecipes)
 
 // function showDrink(response) {
 //       var drink = response.drinks[0];
@@ -93,6 +87,7 @@ searchBtn.addEventListener('click', searchForRecipes)
 
 
 function fetchFoodRecipes(data) {
+  var proteinType = foodChoices.value;
   fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=33dd3dda2eda41288af3b57daefc3a77&titleMatch=${proteinType}&number=100&addRecipeInformation=true&fillIngredients=true`)
   
   .then(response => response.json())
@@ -135,24 +130,25 @@ function fetchFoodRecipes(data) {
 
 
 function fetchDrinks(data) {
-var drinkApi = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=" + output;
-                
-fetch(drinkApi)
-.then(response => response.json())
-.then(data => {
-    console.log(data)
-    for(var i = 0; i < 5; i++) {
-      var randomDrinks = Math.floor(Math.random() * data.drinks.length)
-      var drinks = data.drinks[randomDrinks].idDrink;
-      console.log(randomDrinks)
-      console.log(drinks)
-      fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinks}`)
-      .then(response => response.json())
-      .then(data => {
-        console.log(data)
-      })
-    }
-})
+  var drinkType = drinkChoices.value;
+  var drinkApi = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkType}`;
+  
+  fetch(drinkApi)
+  .then(response => response.json())
+  .then(data => {
+      console.log(data)
+      for(var i = 0; i < 5; i++) {
+        var randomDrinks = Math.floor(Math.random() * data.drinks.length)
+        var drinks = data.drinks[randomDrinks].idDrink;
+        console.log(randomDrinks)
+        console.log(drinks)
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinks}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+        })
+      }
+  })
 }
 
 
