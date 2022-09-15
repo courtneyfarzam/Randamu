@@ -11,60 +11,61 @@
 
 
 <body>
-<div class="wrapper">
-<div class="search-container">
 
-    <div class="food">
+<div class="wrapper row">
+    <div class="search-container col s3">
 
-        <h3>Food Options:</h3>
-        <div id="foodChoices" class="input-field col s12">
-            <select id="foodOptions">
-            <option value="0" disabled selected>Please Select Your Meal</option>
-            <option value="Chicken">Chicken</option>
-            <option value="Beef">Beef</option>
-            <option value="Lamb">Lamb</option>
-            <option value="Pork">Pork</option>
-            <option value="Duck">Duck</option>
-            <option value="Salmon">Salmon</option>
-            <option value="Cod">Cod</option>
-            <option value="Shrimp">Shrimp</option>
-            <option value="Fish">Fish</option>
-            <!-- Make This AutoFill if we have time -->
-            </select>
-            <label>Materialize Select</label>
+        <div class="food">
+
+            <h3>Food Options:</h3>
+            <div id="foodChoices" class="input-field">
+                <select id="foodOptions">
+                <option value="0" disabled selected>Please Select Your Meal</option>
+                <option value="Chicken">Chicken</option>
+                <option value="Beef">Beef</option>
+                <option value="Lamb">Lamb</option>
+                <option value="Pork">Pork</option>
+                <option value="Duck">Duck</option>
+                <option value="Salmon">Salmon</option>
+                <option value="Cod">Cod</option>
+                <option value="Shrimp">Shrimp</option>
+                <option value="Fish">Fish</option>
+                <!-- Make This AutoFill if we have time -->
+                </select>
+            </div>
+
         </div>
 
-    </div>
+        <div class="drink">
 
-    <div class="drink">
-
-        <h3>Drink Options:</h3>
-        <div id="drinkChoices"  class="input-field col s12">
-            <select id="drinkOptions">
-            <option value="0" disabled selected>Please Select Your Drink</option>
-            <option value="Ordinary Drink">Ordinary Drink</option>
-            <option value="Cocktail">Cocktail</option>
-            <option value="Beer">Beer</option>
-            <option value="Shot">Shot</option>
-            <option value="Punch/PartyDrink">Punch/PartyDrink</option>
-            <option value="Cocoa">Cocoa</option>
-            <option value="Coffee/Tea">Coffee/Tea</option>
-            <option value="Other/Unknown">Other/Unknown</option>
-            </select>
-            <label>Materialize Select</label>
+            <h3>Drink Options:</h3>
+            <div id="drinkChoices"  class="input-field">
+                <select id="drinkOptions">
+                <option value="0" disabled selected>Please Select Your Drink</option>
+                <option value="Ordinary Drink">Ordinary Drink</option>
+                <option value="Cocktail">Cocktail</option>
+                <option value="Beer">Beer</option>
+                <option value="Shot">Shot</option>
+                <option value="Punch/PartyDrink">Punch/PartyDrink</option>
+                <option value="Cocoa">Cocoa</option>
+                <option value="Coffee/Tea">Coffee/Tea</option>
+                <option value="Other/Unknown">Other/Unknown</option>
+                </select>
+            </div>
+            
+            <!-- Search Button -->
         </div>
+
+        <button class="searchBtn waves-effect waves-light btn" id="searchBtn">Search</button>
         
-        <!-- Search Button -->
-        <button class="searchBtn" id="searchBtn">Search</button>
     </div>
-    
-</div>
 
-    <div class="food-container">
+    <div class="food-container col s4">
         <h2>Food Recipes:</h2>
         <!-- These will be added in Javascript -->
     </div>
-    <div class="drink-container">
+
+    <div class="drink-container col s4">
         <h2>Drink Recipes:</h2>
         <!-- These will be added in Javascript -->
     </div>
