@@ -17,7 +17,7 @@ let drinkType = 'cocktail'
 
 searchBtn.addEventListener('click', function() {
   fetchFoodRecipes();
-  // fetchDrinks();
+  fetchDrinks();
 })
 
 // Event listener for drop down menus
@@ -37,27 +37,6 @@ M.FormSelect.init(elems);
 //       var i = 1;
 //       var stop = false;
 //       var ingHead = "<tr><th>Ingredients</th><th>Amount</th></tr>"
-
-      // dynamically create html
-      // WE WILL PROBABLY HAVE TO DO FOR EACH HERE
-      // var recipeEl = document.createElement('div');
-      // recipeEl.setAttribute('class', 'recipe-card');
-
-      // var recipeName = document.createElement('h4');
-      // recipeName.textContent = data.title; 
-      
-      // var drinkCategory = document.createElement('h5');
-      // drinkCategory.textContent = data.dishTypes;
-
-      // var drinkImg = document.createElement('img');
-      // drinkImg.setAttribute('class', 'recipe-img');
-      // drinkImg.src = data.sourceUrl;
-
-      // var ingredients = document.createElement('td');
-      // ingredients.textContent = data.extendedIngredients[i].original;
-
-      // var recipeInstructions = document.createElement('p');
-      // recipeInstructions = data.analyzedInstructions[0].steps[i];
 
 
 //       $("#drinkName").text(drink.strDrink);
@@ -84,31 +63,10 @@ M.FormSelect.init(elems);
     // }
 
 
-var searchHistory = JSON.parse(localStorage.getItem('search-history'));
-if (!searchHistory) {
-  searchHistory = [];
-  // set display of search history to none
-}
-
-// searchHistory is ['food option', 'drink option', 'food option', 'drink option', etc...]
-function recordSearchHistory() {
-  var proteinType = foodChoices.value;
-  var drinkType = drinkChoices.value;
-  searchHistory.push(proteinType, drinkType);
-  localStorage.setItem('search-history', JSON.stringify(searchHistory))
- 
-  if (searchHistory) { 
-  for (var i = 0; i < searchHistory.length; i++) {
-    console.log(searchHistory[i]);
-  }}
-}
-
-
 
 
 function fetchFoodRecipes(data) {
   var proteinType = foodChoices.value;
-  recordSearchHistory();
   fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=33dd3dda2eda41288af3b57daefc3a77&titleMatch=${proteinType}&number=100&addRecipeInformation=true&fillIngredients=true`)
   
   .then(response => response.json())
@@ -123,65 +81,64 @@ function fetchFoodRecipes(data) {
     }
       // dynamically create html
       // WE WILL PROBABLY HAVE TO DO FOR EACH HERE
-      var recipeEl = document.createElement('div');
-      recipeEl.setAttribute('class', 'recipe-card');
+      // var recipeEl = document.createElement('div');
+      // recipeEl.setAttribute('class', 'recipe-card');
 
-      var recipeName = document.createElement('h4');
-      recipeName.textContent = data.title; 
+      // var recipeName = document.createElement('h4');
+      // recipeName.textContent = data.title; 
       
-      var foodCategory = document.createElement('h5');
-      foodCategory.textContent = data.dishTypes;
+      // var foodCategory = document.createElement('h5');
+      // foodCategory.textContent = data.dishTypes;
 
-      var foodImg = document.createElement('img');
-      foodImg.setAttribute('class', 'recipe-img');
-      foodImg.src = data.sourceUrl;
+      // var foodImg = document.createElement('img');
+      // foodImg.setAttribute('class', 'recipe-img');
+      // foodImg.src = data.sourceUrl;
 
-      var ingredients = document.createElement('td');
-      ingredients.textContent = data.extendedIngredients[i].original;
+      // var ingredients = document.createElement('td');
+      // ingredients.textContent = data.extendedIngredients[i].original;
 
-      var recipeInstructions = document.createElement('p');
-      recipeInstructions = data.analyzedInstructions[0].steps[i];
+      // var recipeInstructions = document.createElement('p');
+      // recipeInstructions = data.analyzedInstructions[0].steps[i];
   })
 
 }
   
 // // add to search button function 
-selectElement = document.querySelector('#drinks');
+// selectElement = document.querySelector('#drinks');
 // output = selectElement.options[selectElement.selectedIndex].value;
 
 
-// function fetchDrinks(data) {
-//   var drinkType = drinkChoices.value;
-//   var drinkApi = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkType}`;
+function fetchDrinks(data) {
+  var drinkType = drinkChoices.value;
+  var drinkApi = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkType}`;
   
-//   fetch(drinkApi)
-//   .then(response => response.json())
-//   .then(data => {
-//       console.log(data)
-//       for(var i = 0; i < 5; i++) {
-//         var randomDrinks = Math.floor(Math.random() * data.drinks.length)
-//         var drinks = data.drinks[randomDrinks].idDrink;
-//         console.log(randomDrinks)
-//         console.log(drinks)
-//         fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinks}`)
-//         .then(response => response.json())
-//         .then(data => {
-//           console.log(data)
+  fetch(drinkApi)
+  .then(response => response.json())
+  .then(data => {
+      console.log(data)
+      for(var i = 0; i < 5; i++) {
+        var randomDrinks = Math.floor(Math.random() * data.drinks.length)
+        var drinks = data.drinks[randomDrinks].idDrink;
+        console.log(randomDrinks)
+        console.log(drinks)
+        fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinks}`)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
              // dynamically create html
       // WE WILL PROBABLY HAVE TO DO FOR EACH HERE
-      var recipeEl = document.createElement('div');
-      recipeEl.setAttribute('class', 'recipe-card');
+      // var recipeEl = document.createElement('div');
+      // recipeEl.setAttribute('class', 'recipe-card');
 
-      var recipeName = document.createElement('h4');
-      recipeName.textContent = data.drinks[0].strDrink; 
+      // var recipeName = document.createElement('h4');
+      // recipeName.textContent = data.drinks[i].strDrink; 
       
-      var drinkCategory = document.createElement('h5');
-      drinkCategory.textContent = data.drinks[0].strCategory;
+      // var drinkCategory = document.createElement('h5');
+      // drinkCategory.textContent = data.drinks[i].strCategory;
 
-
-      var drinkImg = document.createElement('img');
-      drinkImg.setAttribute('class', 'recipe-img');
-      drinkImg.src = data.drinks[0].strDrinkThumb;
+      // var drinkImg = document.createElement('img');
+      // drinkImg.setAttribute('class', 'recipe-img');
+      // drinkImg.src = data.drinks[i].strDrinkThumb;
 
       var drink = data.drinks[0];
 
@@ -198,18 +155,17 @@ selectElement = document.querySelector('#drinks');
           console.log(`${ingredient.amount} of ${ingredient.name}`)
       });
 
-
       // var ingredients = document.createElement('td');
       // ingredients.textContent = data.drinks[i].;
 
       // var recipeInstructions = document.createElement('p');
       // recipeInstructions = data.analyzedInstructions[0].steps[i];
-//         })
-//       }
-//   })
-// }
+        })
+      }
+  })
+}
 
 
 
 
-// fetchDrinks();
+fetchDrinks();
