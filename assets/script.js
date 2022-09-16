@@ -17,7 +17,7 @@ let drinkType = 'cocktail'
 
 searchBtn.addEventListener('click', function() {
   fetchFoodRecipes();
-  fetchDrinks();
+  // fetchDrinks();
 })
 
 // Event listener for drop down menus
@@ -84,10 +84,31 @@ M.FormSelect.init(elems);
 //     }
 
 
+var searchHistory = JSON.parse(localStorage.getItem('search-history'));
+if (!searchHistory) {
+  searchHistory = [];
+  // set display of search history to none
+}
+
+// searchHistory is ['food option', 'drink option', 'food option', 'drink option', etc...]
+function recordSearchHistory() {
+  var proteinType = foodChoices.value;
+  var drinkType = drinkChoices.value;
+  searchHistory.push(proteinType, drinkType);
+  localStorage.setItem('search-history', JSON.stringify(searchHistory))
+ 
+  if (searchHistory) { 
+  for (var i = 0; i < searchHistory.length; i++) {
+    console.log(searchHistory[i]);
+  }}
+}
+
+
 
 
 function fetchFoodRecipes(data) {
   var proteinType = foodChoices.value;
+  recordSearchHistory();
   fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=33dd3dda2eda41288af3b57daefc3a77&titleMatch=${proteinType}&number=100&addRecipeInformation=true&fillIngredients=true`)
   
   .then(response => response.json())
@@ -126,26 +147,26 @@ function fetchFoodRecipes(data) {
   
 // // add to search button function 
 selectElement = document.querySelector('#drinks');
-output = selectElement.options[selectElement.selectedIndex].value;
+// output = selectElement.options[selectElement.selectedIndex].value;
 
 
-function fetchDrinks(data) {
-  var drinkType = drinkChoices.value;
-  var drinkApi = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkType}`;
+// function fetchDrinks(data) {
+//   var drinkType = drinkChoices.value;
+//   var drinkApi = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkType}`;
   
-  fetch(drinkApi)
-  .then(response => response.json())
-  .then(data => {
-      console.log(data)
-      for(var i = 0; i < 5; i++) {
-        var randomDrinks = Math.floor(Math.random() * data.drinks.length)
-        var drinks = data.drinks[randomDrinks].idDrink;
-        console.log(randomDrinks)
-        console.log(drinks)
-        fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinks}`)
-        .then(response => response.json())
-        .then(data => {
-          console.log(data)
+//   fetch(drinkApi)
+//   .then(response => response.json())
+//   .then(data => {
+//       console.log(data)
+//       for(var i = 0; i < 5; i++) {
+//         var randomDrinks = Math.floor(Math.random() * data.drinks.length)
+//         var drinks = data.drinks[randomDrinks].idDrink;
+//         console.log(randomDrinks)
+//         console.log(drinks)
+//         fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinks}`)
+//         .then(response => response.json())
+//         .then(data => {
+//           console.log(data)
              // dynamically create html
       // WE WILL PROBABLY HAVE TO DO FOR EACH HERE
       // var recipeEl = document.createElement('div');
@@ -166,12 +187,12 @@ function fetchDrinks(data) {
 
       // var recipeInstructions = document.createElement('p');
       // recipeInstructions = data.analyzedInstructions[0].steps[i];
-        })
-      }
-  })
-}
+//         })
+//       }
+//   })
+// }
 
 
 
 
-fetchDrinks();
+// fetchDrinks();
