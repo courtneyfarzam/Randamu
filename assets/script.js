@@ -68,20 +68,20 @@ M.FormSelect.init(elems);
 //       //clear and populate ingredient table
 //       $("#drinkIngredient").empty();
 //       $("#drinkIngredient").append(ingHead);
-//       while (!stop) {
-//         if (drink["strIngredient" + i]) {
-//           var trDiv = $("<tr>");
-//           var tdDiv1 = $("<td>");
-//           var tdDiv2 = $("<td>");
-//               tdDiv1.text(drink["strIngredient" + i]);
-//               tdDiv2.text(drink["strMeasure" + i]);
-//               trDiv.append(tdDiv1, tdDiv2);
-//               $("#drinkIngredient").append(trDiv);
-//               i++;
-//         } else {
-//           stop = true;
-//         }
-//     }
+    //   while (!stop) {
+    //     if (drink["strIngredient" + i]) {
+    //       var trDiv = $("<tr>");
+    //       var tdDiv1 = $("<td>");
+    //       var tdDiv2 = $("<td>");
+    //           tdDiv1.text(drink["strIngredient" + i]);
+    //           tdDiv2.text(drink["strMeasure" + i]);
+    //           trDiv.append(tdDiv1, tdDiv2);
+    //           $("#drinkIngredient").append(trDiv);
+    //           i++;
+    //     } else {
+    //       stop = true;
+    //     }
+    // }
 
 
 
@@ -157,9 +157,26 @@ function fetchDrinks(data) {
       // var drinkCategory = document.createElement('h5');
       // drinkCategory.textContent = data.drinks[i].strCategory;
 
+
       // var drinkImg = document.createElement('img');
       // drinkImg.setAttribute('class', 'recipe-img');
       // drinkImg.src = data.drinks[i].strDrinkThumb;
+
+      var drink = data.drinks[0];
+
+      let index = 1;
+      let ingredientArray = [];
+      while (drink['strIngredient' + index]) {
+          ingredientArray.push({name: drink['strIngredient' + index], amount: drink['strMeasure' + index] ? drink['strMeasure' + index]: "A dash "});
+          index++;
+      }
+  
+      console.log('Drink: ', drink.strDrink);
+      console.log('Ingredients: ');
+      ingredientArray.forEach((ingredient) => {
+          console.log(`${ingredient.amount} of ${ingredient.name}`)
+      });
+
 
       // var ingredients = document.createElement('td');
       // ingredients.textContent = data.drinks[i].;
