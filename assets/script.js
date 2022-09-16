@@ -84,6 +84,28 @@ M.FormSelect.init(elems);
     // }
 
 
+var searchHistory = JSON.parse(localStorage.getItem('search-history'));
+if (!searchHistory) {
+  searchHistory = [];
+  // set display of search history to none
+}
+
+// searchHistory is ['food option', 'drink option', 'food option', 'drink option', etc...]
+function recordSearchHistory() {
+  var proteinType = foodChoices.value;
+  var drinkType = drinkChoices.value;
+  searchHistory.push(proteinType, drinkType);
+  localStorage.setItem('search-history', JSON.stringify(searchHistory))
+ 
+  if (searchHistory) { 
+  for (var i = 0; i < searchHistory.length; i++) {
+    console.log(searchHistory[i]);
+  }}
+}
+
+// add dynamic html elements
+
+
 function fetchFoodRecipes(data) {
   var proteinType = foodChoices.value;
   fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=33dd3dda2eda41288af3b57daefc3a77&titleMatch=${proteinType}&number=100&addRecipeInformation=true&fillIngredients=true`)
