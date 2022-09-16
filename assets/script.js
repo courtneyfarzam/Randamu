@@ -3,6 +3,7 @@ const apiId = '291b0eda';
 var searchBtn = document.querySelector('#searchBtn');
 var foodChoices = document.querySelector('#foodOptions');
 var drinkChoices = document.querySelector('#drinkOptions');
+var searchHistoryEl = document.getElementById('search-history');
 
 let proteinType = 'chicken'
 let drinkType = 'cocktail'
@@ -101,9 +102,31 @@ function recordSearchHistory() {
   for (var i = 0; i < searchHistory.length; i++) {
     console.log(searchHistory[i]);
   }}
+
+  var recentFoodHeader = document.createElement('h4');
+  recentFoodHeader.textContent = 'Recent Food Searches';
+
+  var recentDrinkHeader = document.createElement('h4');
+  recentDrinkHeader.textContent = 'Recent Drink Searches';
+
+  var foodHistoryList = document.createElement('ul');
+  var drinkHistoryList = document.createElement('ul');
+  
+  var foodHistoryItems = document.createElement('li');
+  foodHistoryItems.textContent = proteinType;
+
+  var drinkHistoryItems = document.createElement('li');
+  drinkHistoryItems.textContent = drinkType;
+  
+  foodHistoryList.prepend(foodHistoryItems);
+  drinkHistoryList.prepend(drinkHistoryItems);
+  recentFoodHeader.append(foodHistoryList);
+  recentDrinkHeader.append(drinkHistoryList);
+  searchHistoryEl.append(recentFoodHeader, recentDrinkHeader);
 }
 
 // add dynamic html elements
+
 
 
 function fetchFoodRecipes(data) {
@@ -183,20 +206,20 @@ selectElement = document.querySelector('#drinks');
       // drinkImg.setAttribute('class', 'recipe-img');
       // drinkImg.src = data.drinks[i].strDrinkThumb;
 
-      var drink = data.drinks[0];
+      // var drink = data.drinks[0];
 
-      let index = 1;
-      let ingredientArray = [];
-      while (drink['strIngredient' + index]) {
-          ingredientArray.push({name: drink['strIngredient' + index], amount: drink['strMeasure' + index] ? drink['strMeasure' + index]: "A dash "});
-          index++;
-      }
+      // let index = 1;
+      // let ingredientArray = [];
+      // while (drink['strIngredient' + index]) {
+      //     ingredientArray.push({name: drink['strIngredient' + index], amount: drink['strMeasure' + index] ? drink['strMeasure' + index]: "A dash "});
+      //     index++;
+      // }
   
-      console.log('Drink: ', drink.strDrink);
-      console.log('Ingredients: ');
-      ingredientArray.forEach((ingredient) => {
-          console.log(`${ingredient.amount} of ${ingredient.name}`)
-      });
+      // console.log('Drink: ', drink.strDrink);
+      // console.log('Ingredients: ');
+      // ingredientArray.forEach((ingredient) => {
+      //     console.log(`${ingredient.amount} of ${ingredient.name}`)
+      // });
 
 
       // var ingredients = document.createElement('td');
