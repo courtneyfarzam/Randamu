@@ -4,8 +4,10 @@ var searchBtn = document.querySelector('#searchBtn');
 var foodChoices = document.querySelector('#foodOptions');
 var drinkChoices = document.querySelector('#drinkOptions');
 var searchHistoryEl = document.getElementById('search-history');
-var foodContainer = document.querySelector('.food-container')
-var drinkContainer = document.querySelector('.drink-container')
+var foodContainer = document.querySelector('.food-container');
+var drinkContainer = document.querySelector('.drink-container');
+var recentFoodEl = document.querySelector('#recent-food');
+var recentDrinkEl = document.querySelector('#recent-drink');
 
 let proteinType = 'chicken'
 let drinkType = 'cocktail'
@@ -87,29 +89,22 @@ M.FormSelect.init(elems);
     // }
 
 
-// var searchHistory = JSON.parse(localStorage.getItem('search-history'));
-// if (!searchHistory) {
-//   searchHistory = [];
-//   // set display of search history to none
-// }
+var searchHistory = JSON.parse(localStorage.getItem('search-history'));
+  if (!searchHistory) {
+    searchHistory = [];
+  }
 
-// // searchHistory is ['food option', 'drink option', 'food option', 'drink option', etc...]
-// function recordSearchHistory() {
-//   var proteinType = foodChoices.value;
-//   var drinkType = drinkChoices.value;
-//   searchHistory.push(proteinType, drinkType);
-//   localStorage.setItem('search-history', JSON.stringify(searchHistory))
- 
+// searchHistory is ['food option', 'drink option', 'food option', 'drink option', etc...]
+function recordSearchHistory() {
+  var proteinType = foodChoices.value;
+  var drinkType = drinkChoices.value;
+  searchHistory.push(proteinType, drinkType);
+  localStorage.setItem('search-history', JSON.stringify(searchHistory))
+
   if (searchHistory) { 
-  for (var i = 0; i < searchHistory.length; i++) {
+    for (var i = 0; i < searchHistory.length; i++) {
     console.log(searchHistory[i]);
   }}
-
-  var recentFoodHeader = document.createElement('h4');
-  recentFoodHeader.textContent = 'Recent Food Searches';
-
-  var recentDrinkHeader = document.createElement('h4');
-  recentDrinkHeader.textContent = 'Recent Drink Searches';
 
   var foodHistoryList = document.createElement('ul');
   var drinkHistoryList = document.createElement('ul');
@@ -120,11 +115,11 @@ M.FormSelect.init(elems);
   var drinkHistoryItems = document.createElement('li');
   drinkHistoryItems.textContent = drinkType;
   
+  recentFoodEl.append(foodHistoryItems);
+  recentDrinkEl.append(drinkHistoryItems);
   foodHistoryList.prepend(foodHistoryItems);
   drinkHistoryList.prepend(drinkHistoryItems);
-  recentFoodHeader.append(foodHistoryList);
-  recentDrinkHeader.append(drinkHistoryList);
-  searchHistoryEl.append(recentFoodHeader, recentDrinkHeader);
+  searchHistoryEl.append(foodHistoryList, drinkHistoryList);
 }
 
 // add dynamic html elements
