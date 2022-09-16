@@ -3,6 +3,8 @@ const apiId = '291b0eda';
 var searchBtn = document.querySelector('#searchBtn');
 var foodChoices = document.querySelector('#foodOptions');
 var drinkChoices = document.querySelector('#drinkOptions');
+var foodContainer = document.querySelector('.food-container')
+var drinkContainer = document.querySelector('.drink-container')
 
 let proteinType = 'chicken'
 let drinkType = 'cocktail'
@@ -84,24 +86,24 @@ M.FormSelect.init(elems);
     // }
 
 
-var searchHistory = JSON.parse(localStorage.getItem('search-history'));
-if (!searchHistory) {
-  searchHistory = [];
-  // set display of search history to none
-}
+// var searchHistory = JSON.parse(localStorage.getItem('search-history'));
+// if (!searchHistory) {
+//   searchHistory = [];
+//   // set display of search history to none
+// }
 
-// searchHistory is ['food option', 'drink option', 'food option', 'drink option', etc...]
-function recordSearchHistory() {
-  var proteinType = foodChoices.value;
-  var drinkType = drinkChoices.value;
-  searchHistory.push(proteinType, drinkType);
-  localStorage.setItem('search-history', JSON.stringify(searchHistory))
+// // searchHistory is ['food option', 'drink option', 'food option', 'drink option', etc...]
+// function recordSearchHistory() {
+//   var proteinType = foodChoices.value;
+//   var drinkType = drinkChoices.value;
+//   searchHistory.push(proteinType, drinkType);
+//   localStorage.setItem('search-history', JSON.stringify(searchHistory))
  
-  if (searchHistory) { 
-  for (var i = 0; i < searchHistory.length; i++) {
-    console.log(searchHistory[i]);
-  }}
-}
+//   if (searchHistory) { 
+//   for (var i = 0; i < searchHistory.length; i++) {
+//     console.log(searchHistory[i]);
+//   }}
+// }
 
 // add dynamic html elements
 
@@ -135,7 +137,7 @@ function fetchFoodRecipes(data) {
       // foodImg.setAttribute('class', 'recipe-img');
       // foodImg.src = data.sourceUrl;
 
-      // var ingredients = document.createElement('td');
+      // var ingredients = document.createElement('li');
       // ingredients.textContent = data.extendedIngredients[i].original;
 
       // var recipeInstructions = document.createElement('p');
@@ -168,21 +170,27 @@ function fetchDrinks(data) {
           console.log(data)
              // dynamically create html
       // WE WILL PROBABLY HAVE TO DO FOR EACH HERE
+      var drink = data.drinks[0];
+
       var recipeEl = document.createElement('div');
       recipeEl.setAttribute('class', 'recipe-card');
-
-      var recipeName = document.createElement('h4');
-      recipeName.textContent = data.drinks[0].strDrink; 
       
-      var drinkCategory = document.createElement('h5');
-      drinkCategory.textContent = data.drinks[0].strCategory;
-
-
       var drinkImg = document.createElement('img');
       drinkImg.setAttribute('class', 'recipe-img');
-      drinkImg.src = data.drinks[0].strDrinkThumb;
+      drinkImg.src = drink.strDrinkThumb;
 
-      var drink = data.drinks[0];
+      var recipeName = document.createElement('h4');
+      recipeName.textContent = drink.strDrink; 
+      
+      var drinkCategory = document.createElement('h5');
+      drinkCategory.textContent = drink.strCategory;
+
+      var drinkRecipe = document.createElement('p')
+      drinkRecipe.textContent = drink.strInstructions;
+
+      var ingredientList = document.createElement('ul')
+
+
 
       let index = 1;
       let ingredientArray = [];
@@ -191,20 +199,22 @@ function fetchDrinks(data) {
         index++;
       }
   
-      console.log('Drink: ', drink.strDrink);
-      console.log('Ingredients: ');
-      ingredientArray.forEach((ingredient) => {
+        console.log('Drink: ', drink.strDrink);
+        console.log('Ingredients: ');
+
+        ingredientArray.forEach((ingredient) => {
         console.log(`${ingredient.amount} of ${ingredient.name}`)
+
           
-        var ingredients = document.createElement('td');
+        var ingredients = document.createElement('li');
         ingredients.textContent = `${ingredient.amount} of ${ingredient.name}`;
+
+        ingredientList.append(ingredients);
       });
+      recipeEl.append(drinkImg, recipeName, drinkCategory, ingredientList, drinkRecipe);
+      drinkContainer.append(recipeEl)
 
-
-
-      // var recipeInstructions = document.createElement('p');
-      // recipeInstructions = data.analyzedInstructions[0].steps[i];
-        })
+    })
       }
   })
 }
