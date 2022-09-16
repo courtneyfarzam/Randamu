@@ -210,12 +210,12 @@ function fetchDrinks(data) {
 
 
 
-      // let index = 1;
-      // let ingredientArray = [];
-      // while (drink['strIngredient' + index]) {
-    //     ingredientArray.push({name: drink['strIngredient' + index], amount: drink['strMeasure' + index] ? drink['strMeasure' + index]: "A dash "});
-    //     index++;
-      // }
+      let index = 1;
+      let ingredientArray = [];
+      while (drink['strIngredient' + index]) {
+        ingredientArray.push({name: drink['strIngredient' + index], amount: drink['strMeasure' + index] ? drink['strMeasure' + index]: "A dash "});
+        index++;
+      }
   
         console.log('Drink: ', drink.strDrink);
         console.log('Ingredients: ');
@@ -236,7 +236,6 @@ function fetchDrinks(data) {
       }
   })
 }
-
 
 
 
