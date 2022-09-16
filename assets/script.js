@@ -103,7 +103,7 @@ function recordSearchHistory() {
   }}
 }
 
-
+// add dynamic html elements
 
 
 function fetchFoodRecipes(data) {
