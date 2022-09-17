@@ -9,9 +9,13 @@ var drinkContainer = document.querySelector('.drink-container');
 var recentFoodEl = document.querySelector('#recent-food');
 var recentDrinkEl = document.querySelector('#recent-drink');
 
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.sidenav');
+  M.Sidenav.init(elems);
+});
 
 searchBtn.addEventListener('click', function() {
-  fetchFoodRecipes();
+  // fetchFoodRecipes();
   fetchDrinks();
   recordSearchHistory();
 })
@@ -58,50 +62,50 @@ function recordSearchHistory() {
 
 
 
-function fetchFoodRecipes(data) {
-  var proteinType = foodChoices.value;
+// function fetchFoodRecipes(data) {
+//   var proteinType = foodChoices.value;
 
-  fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=050faf63cc2f45df94a3a29319515b93&titleMatch=${proteinType}&number=50&addRecipeInformation=true&fillIngredients=true`)
+//   fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=050faf63cc2f45df94a3a29319515b93&titleMatch=${proteinType}&number=50&addRecipeInformation=true&fillIngredients=true`)
   
-  .then(response => response.json())
-  .then(data => {
-      console.log(data)
-      for(var i = 0; i < 5; i++) {
-        var randomFood = Math.floor(Math.random() * data.results.length)
-        var displayedFood = data.results[randomFood];
-        console.log(displayedFood)
-        console.log(randomFood);
-        displayedFood.forEach
-         var results = data.results[0];
-         var recipeEl = document.createElement('div');
-         recipeEl.setAttribute('class', 'recipe-card');
+//   .then(response => response.json())
+//   .then(data => {
+//       console.log(data)
+//       for(var i = 0; i < 5; i++) {
+//         var randomFood = Math.floor(Math.random() * data.results.length)
+//         var displayedFood = data.results[randomFood];
+//         console.log(displayedFood)
+//         console.log(randomFood);
+//         displayedFood.forEach
+//          var results = data.results[0];
+//          var recipeEl = document.createElement('div');
+//          recipeEl.setAttribute('class', 'recipe-card');
          
-         var foodImg = document.createElement('img');
-         foodImg.setAttribute('class', 'recipe-img');
-         foodImg.src = displayedFood.image;
+//          var foodImg = document.createElement('img');
+//          foodImg.setAttribute('class', 'recipe-img');
+//          foodImg.src = displayedFood.image;
          
-         var recipeName = document.createElement('h4');
-         recipeName.textContent = displayedFood.title; 
+//          var recipeName = document.createElement('h4');
+//          recipeName.textContent = displayedFood.title; 
          
-         var foodCategory = document.createElement('h5');
-         foodCategory.textContent = displayedFood.dishTypes;
+//          var foodCategory = document.createElement('h5');
+//          foodCategory.textContent = displayedFood.dishTypes;
         
-         var ingredients = document.createElement('li');
-         ingredients.textContent = displayedFood.extendedIngredients[i].original;
+//          var ingredients = document.createElement('li');
+//          ingredients.textContent = displayedFood.extendedIngredients[i].original;
    
-         var foodRecipe = document.createElement('p');
-         foodRecipe.textContent = displayedFood.analyzedInstructions[0].steps[i];
+//          var foodRecipe = document.createElement('p');
+//          foodRecipe.textContent = displayedFood.analyzedInstructions[0].steps[i];
    
    
-         var ingredientList = document.createElement('ul')
+//          var ingredientList = document.createElement('ul')
    
-         ingredientList.append(ingredients);
-         recipeEl.append(foodImg, recipeName, foodCategory, ingredientList, foodRecipe);
-         foodContainer.append(recipeEl)
-     }
-  })
+//          ingredientList.append(ingredients);
+//          recipeEl.append(foodImg, recipeName, foodCategory, ingredientList, foodRecipe);
+//          foodContainer.append(recipeEl)
+//      }
+//   })
 
-}
+// }
 
 function fetchDrinks(data) {
   var drinkType = drinkChoices.value;
