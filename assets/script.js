@@ -7,6 +7,7 @@ var recentDrinkEl = document.querySelector('#recent-drink');
 var foodContainer = document.querySelector('.food-container');
 var drinkContainer = document.querySelector('.drink-container');
 
+
 document.addEventListener('DOMContentLoaded', function() {
   var elems = document.querySelectorAll('.sidenav');
   M.Sidenav.init(elems);
@@ -47,19 +48,20 @@ function recordSearchHistory() {
   }}
 
   var foodHistoryList = document.createElement('ul');
-  var drinkHistoryList = document.createElement('ul');
   
   var foodHistoryItems = document.createElement('li');
   foodHistoryItems.textContent = proteinType;
 
+  var drinkHistoryList = document.createElement('ul');
+
   var drinkHistoryItems = document.createElement('li');
   drinkHistoryItems.textContent = drinkType;
-  
-  recentFoodEl.append(foodHistoryItems);
-  recentDrinkEl.append(drinkHistoryItems);
-  foodHistoryList.prepend(foodHistoryItems);
-  drinkHistoryList.prepend(drinkHistoryItems);
-  searchHistoryEl.append(foodHistoryList, drinkHistoryList);
+
+  recentFoodEl.append(foodHistoryList);
+  foodHistoryList.append(foodHistoryItems);
+  recentDrinkEl.append(drinkHistoryList);
+  drinkHistoryList.append(drinkHistoryItems);
+  searchHistoryEl.append(recentFoodEl, recentDrinkEl);
 }
 
 
@@ -76,7 +78,6 @@ function fetchFoodRecipes(data) {
       for(var i = 0; i < 5; i++) {
         var randomFood = Math.floor(Math.random() * data.results.length)
         var displayedFood = data.results[randomFood];
-        displayedFood.forEach
         
         var recipeEl = document.createElement('div');
         recipeEl.setAttribute('class', 'recipe-card');
@@ -87,16 +88,19 @@ function fetchFoodRecipes(data) {
         
         var recipeName = document.createElement('h4');
         recipeName.textContent = displayedFood.title; 
-
+        
         var showFoodBtn = document.createElement('button')
         showFoodBtn.classList.add('btn', 'modal-trigger')
         showFoodBtn.dataset.target = 'modal1'
         showFoodBtn.textContent = 'See Recipe';
+        
+    
 
         var recipeDiv = document.createElement('div')
         recipeDiv.setAttribute('class', 'modal')
-        recipeDiv.id = 'modal1'
-
+        recipeDiv.id = 'modal' + [i]
+     
+        
         var modalDiv = document.createElement('div');
         modalDiv.setAttribute('class', 'modal-content')
         
@@ -112,7 +116,7 @@ function fetchFoodRecipes(data) {
         M.Modal.init(elems);
   
         ingredientList.append(ingredients);
-        modalDiv.append(ingredientList, foodRecipe)
+        modalDiv.appendChild(ingredientList, foodRecipe)
         recipeDiv.append(modalDiv)
         document.body.appendChild(recipeDiv)
         recipeEl.append(foodImg, recipeName, showFoodBtn);
@@ -155,12 +159,12 @@ function fetchDrinks(data) {
 
       var showDrinkBtn = document.createElement('button')
       showDrinkBtn.classList.add('btn', 'modal-trigger')
-      showDrinkBtn.dataset.target = 'modal1'
+      showDrinkBtn.dataset.target = 'modal2'
       showDrinkBtn.textContent = 'See Recipe';
 
       var recipeDiv = document.createElement('div')
       recipeDiv.setAttribute('class', 'modal')
-      recipeDiv.id = 'modal1'
+      recipeDiv.id = 'modal2'
 
       var modalDiv = document.createElement('div');
       modalDiv.setAttribute('class', 'modal-content')
