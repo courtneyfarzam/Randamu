@@ -1,34 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+
 html {
     font-size: 62.5%;
 }
-/* 
-.wrapper {
-    display: flex;  
-    flex-direction: row;
-    flex-wrap: wrap;
+body {
+    background: rgb(255, 255, 255);
+
 }
 
-.search-container {
-    width: 25%;
-    height: 100vh;
-    margin-right: 1%;
-    margin-left: 1.5%;
-    padding: 3rem;
-    background-color: yellow;
+
+/* Navigation */
+h1 {
+    font-size: 5rem;
+}
+
+
+
+nav .brand-logo {
+    line-height: 0;
+    font-size: 5rem;
+}
+
+.material-icons {
+    position: relative;
+    top: -4.5rem;
+    margin-left: 2rem;
+    font-size: 3rem;
+    color: white;
+}
+
+
+/* Food Container */
+
+.row .col.s5 {
+    margin-left: 4rem;
+}
+
+.food-container h2 {
+    text-align: center;
+    margin-right: 2rem;
+}
+
+/* Drink Container */
+
+.drink-container h2 {
+    text-align: center;
+}
+
+/* Recipe Card  */
+
+.recipe-card {
+    text-align: center;
+    background-color: white;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0px 5px 10px rgb(173, 171, 171);
+}
+
+.recipe-img {
+    width: 100%;
     
 }
 
-.food-container {
-    width: 35%;
-    height: 100vh;
-    margin-right: 1%;
-    padding: 3rem;
-    background-color: blueviolet;
+.btn {
+    margin-top: 1rem;
+    margin-bottom: 2rem;
 }
 
-.drink-container {
-    width: 35%;
-    height: 100vh;
-    padding: 3rem;
-    background-color:forestgreen;
-} */
+/* Modal */
+
+.modal {
+    font-family:'Handlee', cursive;
+    font-size: 1.8rem;
+}

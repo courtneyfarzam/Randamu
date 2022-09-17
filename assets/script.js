@@ -1,21 +1,25 @@
-const apiKey = '33dd3dda2eda41288af3b57daefc3a77';
-const apiId = '291b0eda';
 var searchBtn = document.querySelector('#searchBtn');
 var foodChoices = document.querySelector('#foodOptions');
 var drinkChoices = document.querySelector('#drinkOptions');
 var searchHistoryEl = document.getElementById('search-history');
-var foodContainer = document.querySelector('.food-container');
-var drinkContainer = document.querySelector('.drink-container');
 var recentFoodEl = document.querySelector('#recent-food');
 var recentDrinkEl = document.querySelector('#recent-drink');
+var foodContainer = document.querySelector('.food-container');
+var drinkContainer = document.querySelector('.drink-container');
+
 
 document.addEventListener('DOMContentLoaded', function() {
   var elems = document.querySelectorAll('.sidenav');
   M.Sidenav.init(elems);
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.modal');
+  M.Modal.init(elems);
+});
+
 searchBtn.addEventListener('click', function() {
-  // fetchFoodRecipes();
+  fetchFoodRecipes();
   fetchDrinks();
   recordSearchHistory();
 })
@@ -44,68 +48,83 @@ function recordSearchHistory() {
   }}
 
   var foodHistoryList = document.createElement('ul');
-  var drinkHistoryList = document.createElement('ul');
   
   var foodHistoryItems = document.createElement('li');
   foodHistoryItems.textContent = proteinType;
 
+  var drinkHistoryList = document.createElement('ul');
+
   var drinkHistoryItems = document.createElement('li');
   drinkHistoryItems.textContent = drinkType;
-  
-  recentFoodEl.append(foodHistoryItems);
-  recentDrinkEl.append(drinkHistoryItems);
-  foodHistoryList.prepend(foodHistoryItems);
-  drinkHistoryList.prepend(drinkHistoryItems);
-  searchHistoryEl.append(foodHistoryList, drinkHistoryList);
+
+  recentFoodEl.append(foodHistoryList);
+  foodHistoryList.append(foodHistoryItems);
+  recentDrinkEl.append(drinkHistoryList);
+  drinkHistoryList.append(drinkHistoryItems);
+  searchHistoryEl.append(recentFoodEl, recentDrinkEl);
 }
 
 
 
 
-// function fetchFoodRecipes(data) {
-//   var proteinType = foodChoices.value;
+function fetchFoodRecipes(data) {
+  var proteinType = foodChoices.value;
 
-//   fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=050faf63cc2f45df94a3a29319515b93&titleMatch=${proteinType}&number=50&addRecipeInformation=true&fillIngredients=true`)
+  fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=050faf63cc2f45df94a3a29319515b93&titleMatch=${proteinType}&number=50&addRecipeInformation=true&fillIngredients=true`)
   
-//   .then(response => response.json())
-//   .then(data => {
-//       console.log(data)
-//       for(var i = 0; i < 5; i++) {
-//         var randomFood = Math.floor(Math.random() * data.results.length)
-//         var displayedFood = data.results[randomFood];
-//         console.log(displayedFood)
-//         console.log(randomFood);
-//         displayedFood.forEach
-//          var results = data.results[0];
-//          var recipeEl = document.createElement('div');
-//          recipeEl.setAttribute('class', 'recipe-card');
-         
-//          var foodImg = document.createElement('img');
-//          foodImg.setAttribute('class', 'recipe-img');
-//          foodImg.src = displayedFood.image;
-         
-//          var recipeName = document.createElement('h4');
-//          recipeName.textContent = displayedFood.title; 
-         
-//          var foodCategory = document.createElement('h5');
-//          foodCategory.textContent = displayedFood.dishTypes;
+  .then(response => response.json())
+  .then(data => {
+      // console.log(data)
+      for(var i = 0; i < 5; i++) {
+        var randomFood = Math.floor(Math.random() * data.results.length)
+        var displayedFood = data.results[randomFood];
         
-//          var ingredients = document.createElement('li');
-//          ingredients.textContent = displayedFood.extendedIngredients[i].original;
-   
-//          var foodRecipe = document.createElement('p');
-//          foodRecipe.textContent = displayedFood.analyzedInstructions[0].steps[i];
-   
-   
-//          var ingredientList = document.createElement('ul')
-   
-//          ingredientList.append(ingredients);
-//          recipeEl.append(foodImg, recipeName, foodCategory, ingredientList, foodRecipe);
-//          foodContainer.append(recipeEl)
-//      }
-//   })
+        var recipeEl = document.createElement('div');
+        recipeEl.setAttribute('class', 'recipe-card');
+        
+        var foodImg = document.createElement('img');
+        foodImg.setAttribute('class', 'recipe-img');
+        foodImg.src = displayedFood.image;
+        
+        var recipeName = document.createElement('h4');
+        recipeName.textContent = displayedFood.title; 
+        
+        var showFoodBtn = document.createElement('button')
+        showFoodBtn.classList.add('btn', 'modal-trigger')
+        showFoodBtn.dataset.target = 'modal1'
+        showFoodBtn.textContent = 'See Recipe';
+        
+    
 
-// }
+        var recipeDiv = document.createElement('div')
+        recipeDiv.setAttribute('class', 'modal')
+        recipeDiv.id = 'modal' + [i]
+     
+        
+        var modalDiv = document.createElement('div');
+        modalDiv.setAttribute('class', 'modal-content')
+        
+        var ingredientList = document.createElement('ul')
+
+        var ingredients = document.createElement('li');
+        ingredients.textContent = displayedFood.extendedIngredients[i].original;
+  
+        var foodRecipe = document.createElement('p');
+        foodRecipe.textContent = displayedFood.analyzedInstructions[0].steps[i];
+
+        var elems = document.querySelectorAll('.modal');
+        M.Modal.init(elems);
+  
+        ingredientList.append(ingredients);
+        modalDiv.appendChild(ingredientList, foodRecipe)
+        recipeDiv.append(modalDiv)
+        document.body.appendChild(recipeDiv)
+        recipeEl.append(foodImg, recipeName, showFoodBtn);
+        foodContainer.append(recipeEl)
+     }
+  })
+
+}
 
 function fetchDrinks(data) {
   var drinkType = drinkChoices.value;
@@ -137,13 +156,21 @@ function fetchDrinks(data) {
 
       var recipeName = document.createElement('h4');
       recipeName.textContent = drink.strDrink; 
+
+      var showDrinkBtn = document.createElement('button')
+      showDrinkBtn.classList.add('btn', 'modal-trigger')
+      showDrinkBtn.dataset.target = 'modal2'
+      showDrinkBtn.textContent = 'See Recipe';
+
+      var recipeDiv = document.createElement('div')
+      recipeDiv.setAttribute('class', 'modal')
+      recipeDiv.id = 'modal2'
+
+      var modalDiv = document.createElement('div');
+      modalDiv.setAttribute('class', 'modal-content')
+
+
       
-      var drinkCategory = document.createElement('h5');
-      drinkCategory.textContent = drink.strCategory;
-
-      var drinkRecipe = document.createElement('p')
-      drinkRecipe.textContent = drink.strInstructions;
-
       var ingredientList = document.createElement('ul')
 
 
@@ -166,8 +193,18 @@ function fetchDrinks(data) {
         ingredients.textContent = `${ingredient.amount} of ${ingredient.name}`;
 
         ingredientList.append(ingredients);
-      });
-      recipeEl.append(drinkImg, recipeName, drinkCategory, ingredientList, drinkRecipe);
+      });      
+
+      var drinkRecipe = document.createElement('p')
+      drinkRecipe.textContent = drink.strInstructions;
+
+      var elems = document.querySelectorAll('.modal');
+      M.Modal.init(elems);
+
+      modalDiv.append(ingredientList, drinkRecipe)
+      recipeDiv.append(modalDiv)
+      document.body.appendChild(recipeDiv)
+      recipeEl.append(drinkImg, recipeName, showDrinkBtn);
       drinkContainer.append(recipeEl)
 
     })
