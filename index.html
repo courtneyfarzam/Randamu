@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food and Drink Recipes</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="./assets/style.css">
 </head>
@@ -12,89 +13,76 @@
 
 <body>
 
-<div class="wrapper row">
-    <div class="search-container col s3">
+    <nav>
+        <div class="search-container nav-wrapper">
+            <h1 class="brand-logo center">randamu</h1>
+        </div>    
+    </nav>
 
-        <div class="food">
-
-            <h3>Food Options:</h3>
-            <div id="foodChoices" class="input-field">
+    <ul id="slide-out" class="sidenav">
+        <li class="food">
+            <div id="foodChoices" class="input-field col s12">
                 <select id="foodOptions">
-                <option value="0" disabled selected>Please Select Your Meal</option>
-                <option value="Chicken">Chicken</option>
-                <option value="Beef">Beef</option>
-                <option value="Lamb">Lamb</option>
-                <option value="Pork">Pork</option>
-                <option value="Duck">Duck</option>
-                <option value="Salmon">Salmon</option>
-                <option value="Cod">Cod</option>
-                <option value="Shrimp">Shrimp</option>
-                <option value="Fish">Fish</option>
-                <!-- Make This AutoFill if we have time -->
+                    <option value="0" disabled selected>Please Select Your Meal</option>
+                    <option value="Chicken">Chicken</option>
+                    <option value="Beef">Beef</option>
+                    <option value="Lamb">Lamb</option>
+                    <option value="Pork">Pork</option>
+                    <option value="Duck">Duck</option>
+                    <option value="Salmon">Salmon</option>
+                    <option value="Cod">Cod</option>
+                    <option value="Shrimp">Shrimp</option>
+                    <option value="Fish">Fish</option>
                 </select>
             </div>
-
-        </div>
-
-        <div class="drink">
-
-            <h3>Drink Options:</h3>
-            <div id="drinkChoices"  class="input-field">
-                <select id="drinkOptions">
-                <option value="0" disabled selected>Please Select Your Drink</option>
-                <option value="Ordinary Drink">Ordinary Drink</option>
-                <option value="Cocktail">Cocktail</option>
-                <option value="Beer">Beer</option>
-                <option value="Shot">Shot</option>
-                <option value="Punch/PartyDrink">Punch/PartyDrink</option>
-                <option value="Cocoa">Cocoa</option>
-                <option value="Coffee/Tea">Coffee/Tea</option>
-                <option value="Other/Unknown">Other/Unknown</option>
-                </select>
-            </div>
-            
-            <!-- Search Button -->
-        </div>
-
-        <button class="searchBtn waves-effect waves-light btn" id="searchBtn">Search</button>
+        </li>
         
-        <div id="search-history">
-            <!-- dynamically added by js -->
+        <li class="drink">
+            <div id="drinkChoices"  class="input-field col s12">
+                <select id="drinkOptions">
+                    <option value="0" disabled selected>Please Select Your Drink</option>
+                    <option value="Ordinary Drink">Ordinary Drink</option>
+                    <option value="Cocktail">Cocktail</option>
+                    <option value="Beer">Beer</option>
+                    <option value="Shot">Shot</option>
+                    <option value="Punch/PartyDrink">Punch/PartyDrink</option>
+                    <option value="Cocoa">Cocoa</option>
+                    <option value="Coffee/Tea">Coffee/Tea</option>
+                    <option value="Other/Unknown">Other/Unknown</option>
+                </select>
+            </div>
+        </li>
+        
+        <li>
+            <button class="searchBtn waves-effect waves-light btn" id="searchBtn">Search</button>
+        </li>
+        
+        <li id="search-history">
             <h4 id="recent-food">Recent Food Searches</h4>
             <h4 id="recent-drink">Recent Drink Searches</h4>
+        </li>
+        
+    </ul> 
+
+    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons left">menu</i></a>
+        
+        
+    <div class="wrapper row">
+        
+        <div class="food-container col s5">
+            <h2>Food Recipes:</h2>
+            <!-- These will be added in Javascript -->
+        </div>
+
+        <div class="drink-container col s5">
+            <h2>Drink Recipes:</h2>
+            <!-- These will be added in Javascript -->
         </div>
 
     </div>
-
-    <div class="food-container col s4">
-        <h2>Food Recipes:</h2>
-        <!-- These will be added in Javascript -->
-    </div>
-
-    <div class="drink-container col s4">
-        <h2>Drink Recipes:</h2>
-        <!-- These will be added in Javascript -->
-    </div>
-
-</div>
-  
-
-    <!-- Modal Trigger -->
-    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Learn More</a>
-
-    <!-- Modal Structure -->
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
-    </div>
-
-</body>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script src="./assets/script.js"></script>
+
+</body>
 </html>
