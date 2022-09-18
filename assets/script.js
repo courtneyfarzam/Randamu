@@ -6,6 +6,7 @@ var recentFoodEl = document.querySelector('#recent-food');
 var recentDrinkEl = document.querySelector('#recent-drink');
 var foodContainer = document.querySelector('.food-container');
 var drinkContainer = document.querySelector('.drink-container');
+var modalContainer = document.querySelector('.modal-container');
 
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -21,6 +22,8 @@ document.addEventListener('DOMContentLoaded', function() {
 searchBtn.addEventListener('click', function() {
   $('.drink-container').empty();
   $('.food-container').empty();
+  $('.modal-container').empty();
+  $('.welcome').hide();
   fetchFoodRecipes();
   fetchDrinks();
   recordSearchHistory();
@@ -71,6 +74,12 @@ function recordSearchHistory() {
 
 function fetchFoodRecipes(data) {
   var proteinType = foodChoices.value;
+  var headerEl = document.createElement('h2')
+  headerEl.textContent = 'Food Recipes'
+
+  var dividerEl = document.createElement('div')
+  dividerEl.setAttribute('class', 'divider')
+  foodContainer.append(headerEl, dividerEl)
 
   fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=050faf63cc2f45df94a3a29319515b93&titleMatch=${proteinType}&number=50&addRecipeInformation=true&fillIngredients=true`)
   
@@ -81,6 +90,7 @@ function fetchFoodRecipes(data) {
         var randomFood = Math.floor(Math.random() * data.results.length)
         var displayedFood = data.results[randomFood];
         console.log(displayedFood)
+
         
         var recipeEl = document.createElement('div');
         recipeEl.setAttribute('class', 'recipe-card');
@@ -133,7 +143,7 @@ function fetchFoodRecipes(data) {
         
         modalDiv.append(ingredientList)
         recipeDiv.append(modalDiv)
-        document.body.appendChild(recipeDiv)
+        modalContainer.appendChild(recipeDiv)
         recipeEl.append(foodImg, recipeName, showFoodBtn);
         foodContainer.append(recipeEl)
      }
@@ -144,6 +154,12 @@ function fetchFoodRecipes(data) {
 function fetchDrinks(data) {
   var drinkType = drinkChoices.value;
   var drinkApi = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkType}`;
+  var headerEl = document.createElement('h2')
+  headerEl.textContent = 'Drink Recipes'
+
+  var dividerEl = document.createElement('div')
+  dividerEl.setAttribute('class', 'divider')
+  drinkContainer.append(headerEl, dividerEl)
   
   fetch(drinkApi)
   .then(response => response.json())
@@ -213,8 +229,10 @@ function fetchDrinks(data) {
           
         var ingredients = document.createElement('li');
         ingredients.textContent = `${ingredient.amount} of ${ingredient.name}`;
+        var divider = document.createElement('div')
+        divider.setAttribute('class', 'divider')
 
-        ingredientList.append(ingredients);
+        ingredientList.append(ingredients, divider);
       });      
 
       var drinkRecipe = document.createElement('p')
@@ -225,7 +243,7 @@ function fetchDrinks(data) {
 
       modalDiv.append(ingredientList, drinkRecipe)
       recipeDiv.append(modalDiv)
-      document.body.appendChild(recipeDiv)
+      modalContainer.appendChild(recipeDiv)
       recipeEl.append(drinkImg, recipeName, showDrinkBtn);
       drinkContainer.append(recipeEl)
 

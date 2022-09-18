@@ -1,7 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Handlee&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Handlee&family=Urbanist:wght@400;700&display=swap');
 
 html {
     font-size: 62.5%;
+    font-family: 'Urbanist', sans-serif;
+    font-weight: 400;
+
 }
 body {
     background: rgb(197, 193, 193);
@@ -10,6 +13,7 @@ body {
 /* Navigation */
 h1 {
     font-size: 5rem;
+    font-weight: 700;
 }
 
 .wrapper {
@@ -32,13 +36,16 @@ nav .brand-logo {
     color: white;
 }
 
+/* Welcome Container */
+.welcome {
+    font-size: 5rem;
+}
 
 /* Food Container */
 
 
 .food-container h2 {
     text-align: center;
-    margin-right: 2rem;
 }
 
 /* Drink Container */
@@ -46,6 +53,8 @@ nav .brand-logo {
 .drink-container h2 {
     text-align: center;
 }
+
+
 
 /* Recipe Card  */
 
@@ -67,9 +76,45 @@ nav .brand-logo {
     margin-bottom: 2rem;
 }
 
-/* Modal */
+/* Modal Container */
+
+.modal-container {
+    text-align: left;
+}
 
 .modal {
     font-family:'Handlee', cursive;
     font-size: 1.8rem;
+}
+
+@media screen and (max-width: 600px) {
+    .wrapper {
+        width: 95%;
+    }
+    
+    .food-container h2 {
+        font-size: 2.7rem;
+    }
+    
+    .drink-container h2 {
+        font-size: 2.7rem;
+    }
+
+    .recipe-card h4 {
+        font-size: 2rem;
+    }
+}
+
+@media screen and (max-width: 362px) {
+    .food-container h2 {
+        font-size: 2.5rem;
+    }
+    
+    .drink-container h2 {
+        font-size: 2.5rem;
+    }
+
+    .recipe-card h4 {
+        font-size: 1.7rem;
+    }
 }
