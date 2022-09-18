@@ -12,8 +12,8 @@
 </head>
 
 
-<body>
 
+<body>
     <nav>
         <div class="search-container nav-wrapper">
             <h1 class="brand-logo center title">randamu</h2>
@@ -21,6 +21,7 @@
     </nav>
 
     <ul id="slide-out" class="sidenav">
+        <img src="./assets/images/cc3e466fc75c8dde8d13679f95628a7f.jpg" class="circle responsive-img logo">
         <li class="food">
             <div id="foodChoices" class="input-field col s12">
                 <select id="foodOptions">
@@ -46,15 +47,13 @@
                     <option value="Cocktail">Cocktail</option>
                     <option value="Beer">Beer</option>
                     <option value="Shot">Shot</option>
-                    <option value="Punch/PartyDrink">Punch/PartyDrink</option>
                     <option value="Cocoa">Cocoa</option>
-                    <option value="Coffee/Tea">Coffee/Tea</option>
                     <option value="Other/Unknown">Other/Unknown</option>
                 </select>
             </div>
         </li>
         
-        <li>
+        <li class="list-btn">
             <button class="searchBtn waves-effect waves-light btn" id="searchBtn">Search</button>
         </li>
         
@@ -68,18 +67,26 @@
     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons left">search</i></a>
         
         
-    <div class="wrapper row">
+    <div class="wrapper row center">
+
+        <div class="welcome">
+            <h1>Welcome to Randamu!</h1>
+            <p>Are you tired of searching online for food and drink recipes?</p>
+            <p>No problem! Randamu will choose them for you!</p>
+            <p>You may filter your recipe searches by protein type as well as drink type to provide a compiled list of random, tasty recipes.</p>
+            <p>Just click the search icon to get started!</p>
+        </div>
         
-        <div class="food-container col s5">
-            <h2>Food Recipes</h2>
-            <div class="divider"></div>
+        <div class="food-container col s6">
             <!-- These will be added in Javascript -->
         </div>
 
-        <div class="drink-container col s5">
-            <h2>Drink Recipes</h2>
-            <div class="divider"></div>
+        <div class="drink-container col s6">
             <!-- These will be added in Javascript -->
+        </div>
+
+        <div class="modal-container">
+
         </div>
 
     </div>
