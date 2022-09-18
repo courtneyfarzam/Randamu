@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 searchBtn.addEventListener('click', function() {
+  $('.drink-container').empty();
+  $('.food-container').empty();
   fetchFoodRecipes();
   fetchDrinks();
   recordSearchHistory();
