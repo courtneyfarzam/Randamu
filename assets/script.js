@@ -44,7 +44,7 @@ function recordSearchHistory() {
 
   if (searchHistory) { 
     for (var i = 0; i < searchHistory.length; i++) {
-    console.log(searchHistory[i]);
+    // console.log(searchHistory[i]);
   }}
 
   var foodHistoryList = document.createElement('ul');
@@ -88,13 +88,11 @@ function fetchFoodRecipes(data) {
         
         var recipeName = document.createElement('h4');
         recipeName.textContent = displayedFood.title; 
-        
+
         var showFoodBtn = document.createElement('button')
         showFoodBtn.classList.add('btn', 'modal-trigger')
-        showFoodBtn.dataset.target = 'modal1'
+        showFoodBtn.dataset.target = 'modal' + [i]
         showFoodBtn.textContent = 'See Recipe';
-        
-    
 
         var recipeDiv = document.createElement('div')
         recipeDiv.setAttribute('class', 'modal')
@@ -133,16 +131,16 @@ function fetchDrinks(data) {
   fetch(drinkApi)
   .then(response => response.json())
   .then(data => {
-      console.log(data)
+      // console.log(data)
       for(var i = 0; i < 5; i++) {
         var randomDrinks = Math.floor(Math.random() * data.drinks.length)
         var drinks = data.drinks[randomDrinks].idDrink;
-        console.log(randomDrinks)
-        console.log(drinks)
+        // console.log(randomDrinks)
+        // console.log(drinks)
         fetch(`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${drinks}`)
         .then(response => response.json())
         .then(data => {
-          console.log(data)
+          // console.log(data)
              // dynamically create html
       // WE WILL PROBABLY HAVE TO DO FOR EACH HERE
       var drink = data.drinks[0];
@@ -157,14 +155,20 @@ function fetchDrinks(data) {
       var recipeName = document.createElement('h4');
       recipeName.textContent = drink.strDrink; 
 
+
+      var increment = 'modal' + i++
+
       var showDrinkBtn = document.createElement('button')
       showDrinkBtn.classList.add('btn', 'modal-trigger')
-      showDrinkBtn.dataset.target = 'modal2'
+      showDrinkBtn.dataset.target = increment
       showDrinkBtn.textContent = 'See Recipe';
 
       var recipeDiv = document.createElement('div')
       recipeDiv.setAttribute('class', 'modal')
-      recipeDiv.id = 'modal2'
+      recipeDiv.id = increment
+
+
+
 
       var modalDiv = document.createElement('div');
       modalDiv.setAttribute('class', 'modal-content')
@@ -182,11 +186,11 @@ function fetchDrinks(data) {
         index++;
       }
   
-        console.log('Drink: ', drink.strDrink);
-        console.log('Ingredients: ');
+        // console.log('Drink: ', drink.strDrink);
+        // console.log('Ingredients: ');
 
         ingredientArray.forEach((ingredient) => {
-        console.log(`${ingredient.amount} of ${ingredient.name}`)
+        // console.log(`${ingredient.amount} of ${ingredient.name}`)
 
           
         var ingredients = document.createElement('li');
