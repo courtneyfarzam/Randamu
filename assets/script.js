@@ -78,6 +78,7 @@ function fetchFoodRecipes(data) {
       for(var i = 0; i < 5; i++) {
         var randomFood = Math.floor(Math.random() * data.results.length)
         var displayedFood = data.results[randomFood];
+        console.log(displayedFood)
         
         var recipeEl = document.createElement('div');
         recipeEl.setAttribute('class', 'recipe-card');
@@ -103,18 +104,32 @@ function fetchFoodRecipes(data) {
         modalDiv.setAttribute('class', 'modal-content')
         
         var ingredientList = document.createElement('ul')
+        ingredientList.textContent = "Ingredients:"
 
+        for (j = 0; j < displayedFood.extendedIngredients.length; j++){
         var ingredients = document.createElement('li');
-        ingredients.textContent = displayedFood.extendedIngredients[i].original;
+        ingredients.textContent = 
+        displayedFood.extendedIngredients[j]['original']
+        var divider = document.createElement('div')
+        divider.setAttribute('class', 'divider')
+        ingredientList.append(ingredients, divider);
+
+        }
+
+        for(x = 0; x < displayedFood.analyzedInstructions[0]['steps'].length; x++){
+          
+          var foodRecipe = document.createElement('p');
+          foodRecipe.textContent = displayedFood.analyzedInstructions[0]['steps'][x]['step'];
+          ingredientList.append(foodRecipe)
+        }
+
+        
   
-        var foodRecipe = document.createElement('p');
-        foodRecipe.textContent = displayedFood.analyzedInstructions[0].steps[i];
 
         var elems = document.querySelectorAll('.modal');
         M.Modal.init(elems);
-  
-        ingredientList.append(ingredients);
-        modalDiv.appendChild(ingredientList, foodRecipe)
+        
+        modalDiv.append(ingredientList)
         recipeDiv.append(modalDiv)
         document.body.appendChild(recipeDiv)
         recipeEl.append(foodImg, recipeName, showFoodBtn);
@@ -176,6 +191,7 @@ function fetchDrinks(data) {
 
       
       var ingredientList = document.createElement('ul')
+      ingredientList.textContent = "Ingredients:"
 
 
 

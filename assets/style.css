@@ -4,14 +4,16 @@ html {
     font-size: 62.5%;
 }
 body {
-    background: rgb(255, 255, 255);
-
+    background: rgb(197, 193, 193);
 }
-
 
 /* Navigation */
 h1 {
     font-size: 5rem;
+}
+
+.wrapper {
+    width: 80%;
 }
 
 
@@ -22,8 +24,9 @@ nav .brand-logo {
 }
 
 .material-icons {
-    position: relative;
-    top: -4.5rem;
+    width: 2rem;
+    position: absolute;
+    top: 1.8rem;
     margin-left: 2rem;
     font-size: 3rem;
     color: white;
@@ -32,9 +35,6 @@ nav .brand-logo {
 
 /* Food Container */
 
-.row .col.s5 {
-    margin-left: 4rem;
-}
 
 .food-container h2 {
     text-align: center;
@@ -59,7 +59,7 @@ nav .brand-logo {
 
 .recipe-img {
     width: 100%;
-    
+    height: auto;
 }
 
 .btn {
