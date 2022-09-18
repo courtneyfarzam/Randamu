@@ -6,11 +6,24 @@ html {
     font-weight: 400;
 
 }
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+background: rgb(133, 133, 133, .2);
+}
+::-webkit-scrollbar-thumb {
+background: rgb(136, 136, 136, .2);
+}
+::-webkit-scrollbar-thumb:hover {
+background: rgb(85, 85, 85, .2);
+}
+
 body {
     background: rgb(197, 193, 193);
 }
 
-/* Navigation */
 h1 {
     font-size: 5rem;
     font-weight: 700;
@@ -20,7 +33,7 @@ h1 {
     width: 80%;
 }
 
-
+/* Navigation */
 
 nav .brand-logo {
     line-height: 0;
@@ -36,9 +49,42 @@ nav .brand-logo {
     color: white;
 }
 
+/* Side Navigation */
+
+.sidenav {
+    padding: 4rem;
+}
+
+.select-wrapper {
+    margin-top: 5rem;
+    margin-left: 3rem;
+}
+
+.logo {
+    margin-left: 6.5rem;
+    width: 15rem;
+    height: auto;
+}
+
+.list-btn {
+    text-align: center;
+    margin-top: 4rem;
+}
+
+#search-history {
+    text-align: center;
+    margin-top: 4rem;
+}
+
 /* Welcome Container */
 .welcome {
-    font-size: 5rem;
+    position: relative;
+    background-color: #fff;
+    margin-top: 6rem;
+    padding: 3rem;
+}
+.welcome p {
+    font-size: 3rem;
 }
 
 /* Food Container */
