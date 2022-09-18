@@ -82,6 +82,7 @@ nav .brand-logo {
     background-color: #fff;
     margin-top: 6rem;
     padding: 3rem;
+    box-shadow: 0px 5px 10px rgb(173, 171, 171);
 }
 .welcome p {
     font-size: 3rem;
