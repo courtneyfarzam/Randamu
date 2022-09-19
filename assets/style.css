@@ -21,7 +21,7 @@ background: rgb(85, 85, 85, .2);
 }
 
 body {
-    background: url(./images/background.jpg);
+    background: url(./images/backgroundimage.jpg);
     background-color: rgb(197, 193, 193);
     background-attachment: fixed;
     background-repeat: no-repeat;
