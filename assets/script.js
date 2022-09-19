@@ -83,7 +83,7 @@ function fetchFoodRecipes(data) {
   .then(response => response.json())
   .then(data => {
       // console.log(data)
-      for(var i = 0; i < 5; i++) {
+      for(var i = 0; i <= 5; i++) {
         var randomFood = Math.floor(Math.random() * data.results.length)
         var displayedFood = data.results[randomFood];
         console.log(displayedFood)
