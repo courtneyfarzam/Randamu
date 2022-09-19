@@ -4,7 +4,7 @@
 
 ## About The Project
 
-When deciding what road to take for this group project, we all found one common passion: FOOD. The idea started as a way to pair a cocktail with a certain recipe, but then we thought, "What if someone would like multiple options?" From there we decided to create a food and drink generator that displays five different food and drink recipes.    
+When deciding what road to take for this group project, we all found one common passion: FOOD. The idea started as a way to pair a cocktail with a certain recipe, but then we thought, "What if someone would like multiple options?" From there we decided to create a food and drink generator that displays six different food recipes and five different drink recipes.    
 
 After pressing the search icon, the user is prompted to provide a protein type and a drink type to create list of food and drink recipes that are random yet concise. From there, each recipe will display all ingredients, ingredient amounts, and cooking instructions.    
 
