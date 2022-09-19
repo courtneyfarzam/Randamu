@@ -1,11 +1,16 @@
-<h1 align="center">Randamu: A Food and Drink Recipe Generator</h1>
+<h1 align="center">Randamu</h1>
 
-<p align="center">Have you ever been stuck on what to eat for dinner?</p> 
-<p align="center">Or maybe what cocktail you'd like to enjoy? </p>
-<p align="center">Randamu is a food and drink recipe generator that will help you figure these things out! </p>
-<p align="center">Our website can take user input, like protein and drink type, and generate a list of 5 food and drink recipes. </p>
-<p align="center">Each recipe gives a detailed list of ingredients as well as instructions on how to make the meal that the user has chosen. </p>
-<p align="center">Please click our "Live Website" link and get to cooking! </p>
+<p align="center">A Food and Drink Recipe Generator</p> 
+
+## About The Project
+
+When deciding what road to take for this group project, we all found one common passion: FOOD. The idea started as a way to pair a cocktail with a certain recipe, but then we thought, "What if someone would like multiple options?" From there we decided to create a food and drink generator that displays five different food and drink recipes.    
+
+After pressing the search icon, the user is prompted to provide a protein type and a drink type to create list of food and drink recipes that are random yet concise. From there, each recipe will display all ingredients, ingredient amounts, and cooking instructions.    
+
+If you would like to give it a try, please visit the link listed below for our live website!    
+
+Let's get to cooking!    
 
 ## Links
 
@@ -36,6 +41,8 @@
 - HTML
 - CSS
 
+
+
 ## Contributors
 
 **Courtney Ashley**
@@ -59,3 +66,5 @@
 Contributions, issues, and feature requests are welcome!
 
 Give a ⭐️ if you like this project!
+
+
