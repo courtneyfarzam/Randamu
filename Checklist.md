@@ -1,14 +1,61 @@
-APIs used:
-Edamam
-08d30944572c44fe5f3c53e952e3af65	—
+<h1 align="center">Randamu: A Food and Drink Recipe Generator</h1>
 
-const healthType = 
+<p align="center">Have you ever been stuck on what to eat for dinner?</p> 
+<p align="center">Or maybe what cocktail you'd like to enjoy? </p>
+<p align="center">Randamu is a food and drink recipe generator that will help you figure these things out! </p>
+<p align="center">Our website can take user input, like protein and drink type, and generate a list of 5 food and drink recipes. </p>
+<p align="center">Each recipe gives a detailed list of ingredients as well as instructions on how to make the meal that the user has chosen. </p>
+<p align="center">Please click our "Live Website" link and get to cooking! </p>
 
-https://api.edamam.com/api/recipes/v2?type=public&q=%24%7BproteinType%7D&app_id=291b0eda&app_key=08d30944572c44fe5f3c53e952e3af65&diet=balanced&health=${healthType}&cuisineType=American&mealType=Dinner&dishType=Bread&imageSize=REGULAR&field=label&field=ingredients&field=calories&field=tags
+## Links
+
+- [Repo](https://github.com/cmash93/Randamu "<project-name> Repo")
+
+- [Live Website](https://cmash93.github.io/Randamu/ "Live View")
+
+- [Bugs](https://cmash93.github.io/Randamu/issues "Issues Page")
+
+- [Spoonacular](https://spoonacular.com/food-api/docs "API")
+
+- [The Cocktail DB](https://www.thecocktaildb.com/api.php "API")
+
+## Screenshots
+
+![Home Page](/screenshots/1.png "Home Page")
+
+![](/screenshots/2.png)
+
+![](/screenshots/3.png)
 
 
+## Built With
 
-What to we want to happen?
+- JavaScript
+- jQuery
+- Materialize
+- HTML
+- CSS
 
+## Contributors
 
-When do we want it to happpen?
+**Courtney Ashley**
+
+- [Profile](https://github.com/cmash93 "Rohit jain")
+
+**Tristan Wilson**
+
+- [Profile](https://github.com/TristanW63 "Rohit jain")
+
+**Ben Billings**
+
+- [Profile](https://github.com/benbillings "Rohit jain")
+
+**Lindsay Bae**
+
+- [Profile](https://github.com/baelindsay "Rohit jain")
+
+## 🤝 Support
+
+Contributions, issues, and feature requests are welcome!
+
+Give a ⭐️ if you like this project!
