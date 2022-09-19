@@ -26,11 +26,13 @@ Let's get to cooking!
 
 ## Screenshots
 
-![Home Page](/screenshots/1.png "Home Page")
+![Home Page](./assets/images/Randamu1.png "Home Page")
 
-![](/screenshots/2.png)
+![](./assets/images/Randamu2.png)
 
-![](/screenshots/3.png)
+![](./assets/images/Randamu3.png)
+
+![](./assets/images/Randamu4.png)
 
 
 ## Built With

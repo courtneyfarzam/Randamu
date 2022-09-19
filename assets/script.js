@@ -76,10 +76,7 @@ function fetchFoodRecipes(data) {
   var proteinType = foodChoices.value;
   var headerEl = document.createElement('h2')
   headerEl.textContent = 'Food Recipes'
-
-  var dividerEl = document.createElement('div')
-  dividerEl.setAttribute('class', 'divider')
-  foodContainer.append(headerEl, dividerEl)
+  foodContainer.append(headerEl)
 
   fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=050faf63cc2f45df94a3a29319515b93&titleMatch=${proteinType}&number=50&addRecipeInformation=true&fillIngredients=true`)
   
@@ -156,10 +153,7 @@ function fetchDrinks(data) {
   var drinkApi = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=${drinkType}`;
   var headerEl = document.createElement('h2')
   headerEl.textContent = 'Drink Recipes'
-
-  var dividerEl = document.createElement('div')
-  dividerEl.setAttribute('class', 'divider')
-  drinkContainer.append(headerEl, dividerEl)
+  drinkContainer.append(headerEl)
   
   fetch(drinkApi)
   .then(response => response.json())
