@@ -45,7 +45,7 @@ function recordSearchHistory() {
   var proteinType = foodChoices.value;
   var drinkType = drinkChoices.value;
   searchHistory.push(proteinType, drinkType);
-  localStorage.setItem('search-history', JSON.stringify(searchHistory))
+  localStorage.setItem('search-history', JSON.stringify(searchHistory));
 
   if (searchHistory) { 
     for (var i = 0; i < searchHistory.length; i++) {
@@ -68,9 +68,6 @@ function recordSearchHistory() {
   drinkHistoryList.append(drinkHistoryItems);
   searchHistoryEl.append(recentFoodEl, recentDrinkEl);
 }
-
-
-
 
 function fetchFoodRecipes(data) {
   var proteinType = foodChoices.value;
