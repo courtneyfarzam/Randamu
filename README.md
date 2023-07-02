@@ -14,11 +14,11 @@ Let's get to cooking!
 
 ## Links
 
-- [Repo](https://github.com/cmash93/Randamu "<project-name> Repo")
+- [Repo](https://github.com/courtneyfarzam/Randamu "<project-name> Repo")
 
-- [Live Website](https://cmash93.github.io/Randamu/ "Live View")
+- [Live Website](https://courtneyfarzam.github.io/Randamu/ "Live View")
 
-- [Bugs](https://cmash93.github.io/Randamu/issues "Issues Page")
+- [Bugs](https://courtneyfarzam.github.io/Randamu/issues "Issues Page")
 
 - [Spoonacular](https://spoonacular.com/food-api/docs "API")
 
@@ -49,7 +49,7 @@ Let's get to cooking!
 
 **Courtney Ashley**
 
-- [Profile](https://github.com/cmash93 "Rohit jain")
+- [Profile](https://github.com/courtneyfarzam "Rohit jain")
 
 **Tristan Wilson**
 
